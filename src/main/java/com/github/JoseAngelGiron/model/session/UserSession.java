@@ -1,4 +1,4 @@
-package com.github.JoseAngelGiron.model;
+package com.github.JoseAngelGiron.model.session;
 
 import com.github.JoseAngelGiron.model.entity.User;
 

@@ -1,0 +1,227 @@
+.button{
+    -fx-background-color: #171a21;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-pref-width: 120px;
+    -fx-pref-height: 40px;
+    -fx-background-radius: 5px;
+    -fx-border-color: #5d5d5d;
+    -fx-border-width: 1px;
+}
+
+
+.usernameField, .passwordField {
+    -fx-background-color: #202225;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 14px;
+    -fx-pref-width: 200px;
+    -fx-pref-height: 30px;
+    -fx-background-radius: 5px;
+    -fx-border-color: #5d5d5d;
+    -fx-border-width: 1px;
+}
+
+.usernameField:focus, .passwordField:focus {
+    -fx-border-color: #66c0f4;
+}
+
+.text-field {
+    -fx-background-color: #171a21;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 14px;
+    -fx-pref-width: 200px;
+    -fx-pref-height: 30px;
+    -fx-background-radius: 5px;
+    -fx-border-color: #5d5d5d;
+    -fx-border-width: 1px;
+}
+
+.text-field:focused {
+    -fx-border-color: #66c0f4;
+}
+.text-field2 {
+    -fx-background-color: #ffffff; /* Fondo blanco */
+    -fx-text-fill: #000000;       /* Texto negro */
+}
+
+.button2 {
+    -fx-background-color: #2a475e;     /* Color de fondo azul oscuro */
+    -fx-text-fill: #ffffff;            /* Color del texto blanco */
+    -fx-font-size: 14px;               /* Tamaño de la fuente */
+    -fx-font-weight: bold;             /* Texto en negrita */
+    -fx-pref-width: 150px;             /* Ancho preferido del botón */
+    -fx-pref-height: 40px;             /* Altura preferida del botón */
+    -fx-background-radius: 5px;        /* Bordes redondeados */
+    -fx-border-color: #1b2838;         /* Color del borde */
+    -fx-border-width: 2px;             /* Ancho del borde */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.75), 5, 0.5, 0, 0); /* Sombra */
+    -fx-cursor: hand;                  /* Cambiar el cursor al pasar sobre el botón */
+    -fx-padding: 10 20 10 20;          /* Relleno interno */
+}
+
+.button2:hover {
+    -fx-background-color: #3a637e;     /* Color de fondo al pasar el cursor */
+}
+
+.button2:pressed {
+    -fx-background-color: #1b2838;     /* Color de fondo al presionar */
+}
+
+.container {
+    -fx-background-color: linear-gradient(to bottom, #1b2838, #171a21);
+    -fx-padding: 20px;
+}
+
+.root {
+    -fx-background-color: linear-gradient(to bottom, #1b2838, #171a21);
+    -fx-min-width: 1000px; /* Ancho mínimo del contenedor raíz */
+    -fx-min-height: 900px; /* Altura mínima del contenedor raíz */
+}
+.medium-root {
+    -fx-background-color: linear-gradient(to bottom, #1b2838, #171a21);     /* Color de fondo gris claro */
+    -fx-min-width: 800px;               /* Ancho mínimo de la ventana modal */
+    -fx-min-height: 600px;              /* Altura mínima de la ventana modal */
+    -fx-max-width: 600px;               /* Ancho máximo de la ventana modal */
+    -fx-max-height: 600px;              /* Altura máxima de la ventana modal */
+    -fx-padding: 20px;                  /* Relleno interno */
+    -fx-border-color: #1b2838;          /* Color del borde */
+    -fx-border-width: 2px;              /* Ancho del borde */
+    -fx-background-radius: 10px;        /* Bordes redondeados */
+}
+
+.little-root {
+    -fx-background-color: linear-gradient(to bottom, #1b2838, #171a21);     /* Color de fondo gris claro */
+    -fx-min-width: 300px;               /* Ancho mínimo de la ventana modal */
+    -fx-min-height: 300px;              /* Altura mínima de la ventana modal */
+    -fx-max-width: 600px;               /* Ancho máximo de la ventana modal */
+    -fx-max-height: 300px;              /* Altura máxima de la ventana modal */
+    -fx-padding: 20px;                  /* Relleno interno */
+    -fx-border-color: #1b2838;          /* Color del borde */
+    -fx-border-width: 2px;              /* Ancho del borde */
+    -fx-background-radius: 10px;        /* Bordes redondeados */
+}
+
+.search-bar {
+    -fx-background-color: #66c0f4;       /* Color de fondo azul claro */
+    -fx-padding: 10px;                    /* Relleno interno */
+    -fx-border-width: 0;                  /* Sin borde */
+    -fx-background-image: url('search_icon.png'); /* Icono de búsqueda */
+    -fx-background-repeat: no-repeat;     /* No repetir el icono */
+    -fx-background-position: left center; /* Posición del icono */
+    -fx-font-size: 14px;                  /* Tamaño de la fuente */
+    -fx-text-fill: #000000;               /* Color del texto */
+    -fx-prompt-text-fill: #808080;        /* Color del texto de la sugerencia */
+    -fx-pref-height: 40px;                /* Altura preferida */
+}
+
+.search-bar:hover {
+    -fx-background-color: #8ec8e7;       /* Color de fondo al pasar el cursor */
+}
+
+.search-bar:focused {
+    -fx-background-color: #a6d5f3;      /* Color de fondo al estar enfocado */
+}
+
+.steam-button {
+    -fx-background-color: #66c0f4;     /* Color de fondo azul claro */
+    -fx-text-fill: #ffffff;            /* Color del texto blanco */
+    -fx-font-size: 14px;               /* Tamaño de la fuente */
+    -fx-font-weight: bold;             /* Texto en negrita */
+    -fx-pref-width: 150px;             /* Ancho preferido del botón */
+    -fx-pref-height: 40px;             /* Altura preferida del botón */
+    -fx-background-radius: 5px;        /* Bordes redondeados */
+    -fx-border-color: #1b2838;         /* Color del borde */
+    -fx-border-width: 2px;             /* Ancho del borde */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.75), 5, 0.5, 0, 0); /* Sombra */
+    -fx-cursor: hand;                  /* Cambiar el cursor al pasar sobre el botón */
+    -fx-padding: 10 20 10 20;          /* Relleno interno */
+}
+
+.steam-button:hover {
+    -fx-background-color: #8ec8e7;     /* Color de fondo al pasar el cursor */
+}
+
+.steam-button:pressed {
+    -fx-background-color: #1b2838;     /* Color de fondo al presionar */
+}
+
+.steam-text-field {
+    -fx-background-color: #66c0f4;    /* Color de fondo azul claro */
+    -fx-text-fill: #000000;           /* Color del texto negro */
+    -fx-font-size: 14px;              /* Tamaño de la fuente */
+    -fx-pref-width: 300px;            /* Ancho preferido del campo de texto */
+    -fx-pref-height: 40px;            /* Altura preferida del campo de texto */
+    -fx-background-radius: 5px;       /* Bordes redondeados */
+    -fx-border-color: #1b2838;        /* Color del borde */
+    -fx-border-width: 2px;            /* Ancho del borde */
+    -fx-padding: 10px;                /* Relleno interno */
+}
+
+.steam-text-field:focused {
+    -fx-border-color: #66c0f4;        /* Color del borde al estar enfocado */
+}
+
+.steam-text-field:hover {
+    -fx-background-color: #8ec8e7;    /* Color de fondo al pasar el cursor */
+}
+
+
+/* ----- */
+
+.table-view {
+    -fx-background-color: transparent;    /* Fondo transparente */
+}
+
+.table-row-cell {
+    -fx-background-color: #1b2838;        /* Color de fondo de la fila */
+    -fx-text-fill: #ffffff;               /* Color del texto */
+    -fx-font-size: 14px;                  /* Tamaño de la fuente */
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #8ec8e7;        /* Color de fondo de la fila seleccionada */
+}
+
+.table-column {
+    -fx-alignment: center-left;           /* Alineación del contenido */
+    -fx-font-size: 14px;                  /* Tamaño de la fuente */
+    -fx-text-fill: #ffffff;               /* Color del texto */
+    -fx-padding: 10px;                    /* Relleno interno */
+}
+
+.table-column-header {
+    -fx-background-color: #2a475e;       /* Color de fondo del encabezado de la columna */
+    -fx-text-fill: #ffffff;               /* Color del texto */
+    -fx-font-size: 14px;                  /* Tamaño de la fuente */
+    -fx-font-weight: bold;                /* Texto en negrita */
+    -fx-padding: 10px;                    /* Relleno interno */
+}
+
+.table-column-header:hover {
+    -fx-background-color: #3a637e;       /* Color de fondo del encabezado de la columna al pasar el cursor */
+}
+
+.table-column-header .label {
+    -fx-alignment: center-left;           /* Alineación del contenido del encabezado de la columna */
+}
+
+.table-cell {
+    -fx-alignment: center-left;           /* Alineación del contenido */
+    -fx-font-size: 14px;                  /* Tamaño de la fuente */
+    -fx-text-fill: #ffffff;               /* Color del texto */
+    -fx-padding: 10px;                    /* Relleno interno */
+}
+
+.table-view:focused {
+    -fx-focus-color: transparent;         /* Color de foco transparente */
+    -fx-faint-focus-color: transparent;   /* Color de foco tenue transparente */
+}
+
+.table-view .column-header-background {
+    -fx-background-color: transparent;    /* Color de fondo del encabezado de la columna */
+}
+
+.table-view .filler {
+    -fx-background-color: transparent;    /* Color de relleno transparente */
+}
