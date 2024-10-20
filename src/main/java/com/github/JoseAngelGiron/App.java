@@ -1,7 +1,7 @@
 package com.github.JoseAngelGiron;
 
 
-import com.github.JoseAngelGiron.controller.Scenes;
+import com.github.JoseAngelGiron.view.Scenes;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

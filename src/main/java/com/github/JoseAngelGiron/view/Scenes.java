@@ -1,10 +1,11 @@
-package com.github.JoseAngelGiron.controller;
+package com.github.JoseAngelGiron.view;
 
 public enum Scenes {
     ROOT("view/layout"),
 
     LOGIN("view/login"),
-    REGISTER("view/register");
+    REGISTER("view/register"),
+    USERALREADYREGISTER("view/userAlreadyRegistered");
 
 
     private String url;

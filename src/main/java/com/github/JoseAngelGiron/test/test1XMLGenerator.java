@@ -4,6 +4,7 @@ import com.github.JoseAngelGiron.model.entity.User;
 import com.github.JoseAngelGiron.model.entity.UserList;
 import com.github.JoseAngelGiron.persistance.XMLManager;
 
+import static com.github.JoseAngelGiron.model.security.Security.encryptPassword;
 
 
 public class test1XMLGenerator {
@@ -14,13 +15,13 @@ public class test1XMLGenerator {
         UserList users = new UserList();
         System.out.println(XMLManager.createXML(users, usersFilePath));
 
-        UserList userList = XMLManager.readXML(usersFilePath);
-        User userTest = new User("namepepep", "prueba1234", "example@gmail.com");
-        User userTest2 = new User("name2", "prueba1234", "example@gmail.com");
+
+        User userTest = new User("namepepep", encryptPassword("prueba1234"), "example2@gmail.com");
+        User userTest2 = new User("name2", encryptPassword("prueba123455"), "example44@gmail.com");
         userTest2.setId(1);
-        userList.getListOfUsers().add(userTest);
-        userList.getListOfUsers().add(userTest2);
-        XMLManager.writeXML(userList, usersFilePath);
+        users.getListOfUsers().add(userTest);
+        users.getListOfUsers().add(userTest2);
+        XMLManager.writeXML(users, usersFilePath);
 
     }
 }

@@ -25,6 +25,18 @@ public class UserList {
         this.listOfUsers = listOfUsers;
     }
 
+
+    public boolean ifUserExists(User userToCheck) {
+        boolean userExists = false;
+        for(User user: listOfUsers) {
+            if(user.getEmail().equals(userToCheck.getEmail().toLowerCase()) && user.getPassword().equals(userToCheck.getPassword())){
+                userExists = true;
+                break;
+            }
+        }
+        return userExists;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

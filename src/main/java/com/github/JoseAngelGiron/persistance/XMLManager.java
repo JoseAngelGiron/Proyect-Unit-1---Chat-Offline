@@ -1,6 +1,5 @@
 package com.github.JoseAngelGiron.persistance;
 
-import com.github.JoseAngelGiron.model.entity.UserList;
 import java.io.File;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -11,9 +10,6 @@ import javax.xml.bind.Unmarshaller;
 
 
 public class XMLManager {
-
-    private static final String usersFilePath = "C:\\Users\\the_l\\IdeaProjects\\Project-1DA\\src\\main\\xmlStorage\\users.xml";
-
 
     public static <T> boolean createXML(T object, String filename){
         File xmlFile = new File(filename);
@@ -77,16 +73,18 @@ public class XMLManager {
         return result;
     }
 
-    public static UserList readXML(String filePath) {
-        UserList userList = null;
+    public static <T> T readXML(String filePath, Class<T> class1) {
+        T entity = null;
         try {
-            JAXBContext context = JAXBContext.newInstance(UserList.class);
+            JAXBContext context = JAXBContext.newInstance(class1);
             Unmarshaller unmarshaller = context.createUnmarshaller();
-            userList = (UserList) unmarshaller.unmarshal(new File(filePath));
+            entity = (T) unmarshaller.unmarshal(new File(filePath));
         } catch (JAXBException e) {
             e.printStackTrace();
         }
-        return userList;
+        return entity;
     }
+
+
 
 }

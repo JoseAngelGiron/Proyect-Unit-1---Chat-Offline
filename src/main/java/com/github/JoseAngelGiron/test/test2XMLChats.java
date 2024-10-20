@@ -1,9 +1,9 @@
 package com.github.JoseAngelGiron.test;
 
-import com.github.JoseAngelGiron.model.entity.Chat;
+
 import com.github.JoseAngelGiron.model.entity.User;
 
-import com.github.JoseAngelGiron.persistance.XMLManager;
+
 
 
 public class test2XMLChats {
