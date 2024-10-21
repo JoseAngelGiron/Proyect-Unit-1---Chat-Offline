@@ -5,7 +5,8 @@ public enum Scenes {
 
     LOGIN("view/login"),
     REGISTER("view/register"),
-    USERALREADYREGISTER("view/userAlreadyRegistered");
+    USERALREADYREGISTER("view/userAlreadyRegistered"),
+    START("view/start");
 
 
     private String url;

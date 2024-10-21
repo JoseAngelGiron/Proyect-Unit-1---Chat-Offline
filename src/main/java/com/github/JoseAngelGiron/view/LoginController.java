@@ -8,7 +8,7 @@ import com.github.JoseAngelGiron.App;
 
 import com.github.JoseAngelGiron.model.session.UserSession;
 import com.github.JoseAngelGiron.model.entity.User;
-import com.github.JoseAngelGiron.model.xmldatahandler.UserHandler;
+import com.github.JoseAngelGiron.model.xmlDataHandler.UserHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Rectangle2D;

@@ -9,26 +9,28 @@ import static com.github.JoseAngelGiron.model.security.Security.encryptPassword;
 
 
 @XmlRootElement(name = "user")
-@XmlType(propOrder = { "id", "username", "email", "password" , "admin"})
+@XmlType(propOrder = { "id", "username", "email", "password" ,"status", "admin"})
 public class User {
 
     private int id;
     private String username;
     private String password;
     private String email;
+    private String status;
     private boolean admin;
 
-
+    private FriendshipRequestList friendshipRequestList;
 
     public User() {
         id= -1;
 
     }
 
-    public User(String username, String password, String email) {
+    public User(String username, String password, String email, String status) {
         this.username = username;
         setPassword(password);
         this.email = email;
+        this.status = status;
     }
 
 
@@ -57,12 +59,8 @@ public class User {
     public void setPassword(String password) {
         if (password.length() != 64) {
             this.password = encryptPassword(password);
-            System.out.println("Hashed password: " + this.password);
         } else {
-
             this.password = password;
-            System.out.println("Password already hashed: " + this.password);  // Para depuración
-            System.out.println(getId());
         }
     }
     @XmlElement
@@ -75,6 +73,15 @@ public class User {
     }
 
     @XmlElement
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    @XmlElement
     public boolean isAdmin() {
         return admin;
     }
@@ -82,9 +89,6 @@ public class User {
     public void setAdmin(boolean admin) {
         this.admin = admin;
     }
-
-
-
 
     @Override
     public boolean equals(Object o) {

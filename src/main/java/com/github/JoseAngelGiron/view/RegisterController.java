@@ -1,6 +1,5 @@
 package com.github.JoseAngelGiron.view;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -8,7 +7,7 @@ import java.util.regex.Pattern;
 
 import com.github.JoseAngelGiron.App;
 import com.github.JoseAngelGiron.model.entity.User;
-import com.github.JoseAngelGiron.model.xmldatahandler.UserHandler;
+import com.github.JoseAngelGiron.model.xmlDataHandler.UserHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -73,7 +72,7 @@ public class RegisterController extends Controller implements Initializable {
      */
     @FXML
     private void registerUser() throws IOException {
-        userToRegister = new User(nickField.getText(), passwordField.getText(), emailField.getText());
+        userToRegister = new User(nickField.getText(), passwordField.getText(), emailField.getText(), "Hi, I'm using whatsapp !");
         UserHandler userHandler = new UserHandler();
 
         if(userHandler.findByEmail(userToRegister).getId()==-1 && checkFields()){
