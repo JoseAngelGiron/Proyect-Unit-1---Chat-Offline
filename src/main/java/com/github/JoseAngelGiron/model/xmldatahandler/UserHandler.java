@@ -54,8 +54,6 @@ public class UserHandler implements IXMLHandler<User, UserList>{
                 break;
             }
         }
-
-
         return userToReturn;
     }
 

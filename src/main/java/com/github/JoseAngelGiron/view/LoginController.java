@@ -63,7 +63,7 @@ public class LoginController extends Controller implements Initializable {
             session.setUserIntoSession(userToLogin);
 
             resizeWindow();
-            changeToRegister();
+            changeToMainWindow();
 
         }else{
             loginError.setVisible(true);
@@ -77,6 +77,12 @@ public class LoginController extends Controller implements Initializable {
     @FXML
     private void changeToRegister() throws IOException {
         App.setRoot(Scenes.REGISTER.getURL());
+
+    }
+
+    @FXML
+    private void changeToMainWindow() throws IOException {
+        App.setRoot(Scenes.ROOT.getURL());
 
     }
 
