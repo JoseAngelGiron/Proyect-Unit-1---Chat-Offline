@@ -12,6 +12,13 @@ public class UserHandler implements IXMLHandler<User, UserList>{
     private static final String usersFilePath = "C:\\Users\\the_l\\IdeaProjects\\Project-1DA\\src\\main\\xmlStorage\\users\\users.xml";
 
 
+
+
+    @Override
+    public UserList findAll() {
+        return XMLManager.readXML(usersFilePath, UserList.class);
+    }
+
     public User findByID(User user){
         UserList userList = findAll();
         for(User user1: userList.getListOfUsers()){
@@ -21,23 +28,47 @@ public class UserHandler implements IXMLHandler<User, UserList>{
         return user;
     }
 
-    @Override
-    public UserList findAll() {
-        return XMLManager.readXML(usersFilePath, UserList.class);
+    public User findByEmail(User userToCompare){
+        UserList userList = findAll();
+        User userToReturn = new User();
+
+        for(User user: userList.getListOfUsers()){
+            if(user.getEmail().equalsIgnoreCase(userToCompare.getEmail())){
+                userToReturn = user;
+                break;
+            }
+        }
+
+        return  userToReturn;
     }
 
 
 
     @Override
     public User save(User entity) {
+
         User userToReturn = new User();
         UserList userList = findAll();
+        int maxId = findMaxUserId(userList);
+        entity.setId(maxId);
 
         if(userList.getListOfUsers().add(entity)){
+
             XMLManager.writeXML(userList, usersFilePath);
             userToReturn = entity;
         }
         return userToReturn;
+    }
+
+    private int findMaxUserId(UserList userList) {
+        int maxId = -1;
+
+        for (User user : userList.getListOfUsers()) {
+            if (user.getId() > maxId) {
+                maxId = user.getId();
+            }
+        }
+        return maxId +1;
     }
 
     @Override

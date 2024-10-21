@@ -14,6 +14,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
+import static com.github.JoseAngelGiron.view.AppController.changeScene;
 import static com.github.JoseAngelGiron.view.AppController.openModal;
 
 public class RegisterController extends Controller implements Initializable {
@@ -32,12 +33,17 @@ public class RegisterController extends Controller implements Initializable {
     @FXML
     private Label nickLabel3;
 
+    @FXML
+    private Label passwordLabel1;
+    @FXML
+    private Label passwordLabel2;
+
+    @FXML
+    private Label emailLabel;
 
     private User userToRegister;
 
 
-
-    private final static String DEFAULTIMAGE = "C:\\Users\\the_l\\IdeaProjects\\Proyecto-3TR\\src\\main\\resources\\com\\github\\JoseAngelGiron\\view\\IMG\\Huevito.png";
 
 
 
@@ -69,20 +75,16 @@ public class RegisterController extends Controller implements Initializable {
     @FXML
     private void registerUser() throws IOException {
         userToRegister = new User(nickField.getText(), passwordField.getText(), emailField.getText());
-
         UserHandler userHandler = new UserHandler();
 
         if(!userHandler.findAll().ifUserExists(userToRegister) && checkFields()){
 
             userHandler.save(userToRegister);
+            returnToLogin();
 
-            //campo o ventana modal confirmando registro
-
-
-        }else{
+        }else if(userHandler.findByEmail(userToRegister).getId()>=0){
             openModal(Scenes.USERALREADYREGISTER, "Ya existe un usuario con ese nombre...", this, null);
         }
-
     }
 
     /**
@@ -109,6 +111,7 @@ public class RegisterController extends Controller implements Initializable {
 
             valid = true;
         }else{
+
             if(!validateNick(nickField.getText())){
                 nickLabel1.setVisible(true);
                 nickLabel2.setVisible(true);
@@ -118,9 +121,15 @@ public class RegisterController extends Controller implements Initializable {
                 nickLabel2.setVisible(false);
                 nickLabel3.setVisible(false);
             }
-            if (!validateEmail(emailField.getText())){
 
+            if (!validatePassword(passwordField.getText())){
+                passwordLabel1.setVisible(true);
+                passwordLabel2.setVisible(true);
+            }else{
+                passwordLabel1.setVisible(false);
+                passwordLabel2.setVisible(false);
             }
+            emailLabel.setVisible(!validateEmail(emailField.getText()));
         }
         return valid;
     }
@@ -135,6 +144,7 @@ public class RegisterController extends Controller implements Initializable {
         return pattern.matcher(nick).matches();
 
     }
+
     /**
      * Validates a user's password.
      * @param password The password to validate.
