@@ -14,7 +14,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
-import static com.github.JoseAngelGiron.view.AppController.changeScene;
 import static com.github.JoseAngelGiron.view.AppController.openModal;
 
 public class RegisterController extends Controller implements Initializable {
@@ -77,12 +76,12 @@ public class RegisterController extends Controller implements Initializable {
         userToRegister = new User(nickField.getText(), passwordField.getText(), emailField.getText());
         UserHandler userHandler = new UserHandler();
 
-        if(!userHandler.findAll().ifUserExists(userToRegister) && checkFields()){
+        if(userHandler.findByEmail(userToRegister).getId()==-1 && checkFields()){
 
             userHandler.save(userToRegister);
             returnToLogin();
 
-        }else if(userHandler.findByEmail(userToRegister).getId()>=0){
+        }else{
             openModal(Scenes.USERALREADYREGISTER, "Ya existe un usuario con ese nombre...", this, null);
         }
     }

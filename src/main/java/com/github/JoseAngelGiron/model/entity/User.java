@@ -55,7 +55,15 @@ public class User {
     }
 
     public void setPassword(String password) {
-        this.password = encryptPassword(password);
+        if (password.length() != 64) {
+            this.password = encryptPassword(password);
+            System.out.println("Hashed password: " + this.password);
+        } else {
+
+            this.password = password;
+            System.out.println("Password already hashed: " + this.password);  // Para depuración
+            System.out.println(getId());
+        }
     }
     @XmlElement
     public String getEmail() {

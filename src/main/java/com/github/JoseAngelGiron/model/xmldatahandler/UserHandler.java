@@ -6,7 +6,6 @@ import com.github.JoseAngelGiron.persistance.XMLManager;
 
 
 
-
 public class UserHandler implements IXMLHandler<User, UserList>{
 
     private static final String usersFilePath = "C:\\Users\\the_l\\IdeaProjects\\Project-1DA\\src\\main\\xmlStorage\\users\\users.xml";
@@ -40,6 +39,24 @@ public class UserHandler implements IXMLHandler<User, UserList>{
         }
 
         return  userToReturn;
+    }
+
+    public User findByEmailAndPassword(User userToCheck) {
+        UserList userList = findAll();
+        User userToReturn = new User();
+
+        for(User user: userList.getListOfUsers()) {
+
+            if (user.getEmail().equals(userToCheck.getEmail()) &&
+                    user.getPassword().equals(userToCheck.getPassword())){
+
+                userToReturn = user;
+                break;
+            }
+        }
+
+
+        return userToReturn;
     }
 
 
