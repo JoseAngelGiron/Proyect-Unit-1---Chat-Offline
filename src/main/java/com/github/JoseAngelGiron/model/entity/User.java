@@ -21,6 +21,7 @@ public class User {
 
 
     public User() {
+        id= -1;
 
     }
 
@@ -73,6 +74,7 @@ public class User {
     public void setAdmin(boolean admin) {
         this.admin = admin;
     }
+
 
 
 

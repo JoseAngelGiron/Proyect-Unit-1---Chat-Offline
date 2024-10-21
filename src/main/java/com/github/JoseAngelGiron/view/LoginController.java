@@ -12,6 +12,7 @@ import com.github.JoseAngelGiron.model.xmldatahandler.UserHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Rectangle2D;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
@@ -25,6 +26,9 @@ public class LoginController extends Controller implements Initializable {
     private TextField passwordText;
 
     private User userToLogin;
+
+    @FXML
+    private Label loginError;
 
 
     @Override
@@ -42,10 +46,7 @@ public class LoginController extends Controller implements Initializable {
 
     }
 
-    /**
-     * Logs in the user with the provided credentials.
-     * @throws IOException If an I/O error occurs while navigating to the root scene or displaying a modal.
-     */
+
     @FXML
     private void LogUser() throws IOException {
         userToLogin = new User();
@@ -59,13 +60,11 @@ public class LoginController extends Controller implements Initializable {
             UserSession session = UserSession.UserSession();
             session.setUserIntoSession(userToLogin);
 
-
-            //App.setRoot(Scenes.ROOT.getURL());
             resizeWindow();
             changeToRegister();
 
         }else{
-            //openModal(Scenes.USERNOTFOUND, "No se encontro el usuario", this, null);
+            loginError.setVisible(true);
         }
     }
 

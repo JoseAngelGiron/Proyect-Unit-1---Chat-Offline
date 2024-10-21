@@ -25,7 +25,6 @@ public class UserList {
         this.listOfUsers = listOfUsers;
     }
 
-
     public boolean ifUserExists(User userToCheck) {
         boolean userExists = false;
         for(User user: listOfUsers) {
