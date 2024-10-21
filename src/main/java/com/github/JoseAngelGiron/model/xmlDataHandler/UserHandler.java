@@ -1,9 +1,11 @@
-package com.github.JoseAngelGiron.model.xmldatahandler;
+package com.github.JoseAngelGiron.model.xmlDataHandler;
 
 import com.github.JoseAngelGiron.model.entity.User;
 import com.github.JoseAngelGiron.model.entity.UserList;
 import com.github.JoseAngelGiron.persistance.XMLManager;
 
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class UserHandler implements IXMLHandler<User, UserList>{
@@ -18,6 +20,7 @@ public class UserHandler implements IXMLHandler<User, UserList>{
         return XMLManager.readXML(usersFilePath, UserList.class);
     }
 
+
     public User findByID(User user){
         UserList userList = findAll();
         for(User user1: userList.getListOfUsers()){
@@ -25,6 +28,19 @@ public class UserHandler implements IXMLHandler<User, UserList>{
         }
 
         return user;
+    }
+
+    public List<User> findByName(String name, User yourself){
+        UserList userList = findAll();
+        List<User> usersToReturn = new ArrayList<>();
+
+        for(User user: userList.getListOfUsers()){
+            if(user.getUsername().contains(name) && !yourself.getUsername().contains(name)){
+                usersToReturn.add(user);
+            }
+
+        }
+        return usersToReturn;
     }
 
     public User findByEmail(User userToCompare){
@@ -68,7 +84,6 @@ public class UserHandler implements IXMLHandler<User, UserList>{
         entity.setId(maxId);
 
         if(userList.getListOfUsers().add(entity)){
-
             XMLManager.writeXML(userList, usersFilePath);
             userToReturn = entity;
         }
@@ -126,7 +141,7 @@ public class UserHandler implements IXMLHandler<User, UserList>{
 
     @Override
     public boolean create() {
-        UserList userList = findAll();
+        UserList userList = new UserList();
         return XMLManager.createXML(userList, usersFilePath);
     }
 

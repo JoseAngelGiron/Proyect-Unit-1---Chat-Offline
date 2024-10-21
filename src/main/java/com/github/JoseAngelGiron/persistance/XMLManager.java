@@ -17,7 +17,7 @@ public class XMLManager {
 
         if (!xmlFile.exists()) {
 
-            writeXML(object, filename); // La idea de este metodo es hacerlo reutilizable para poder crear los distintos XMLs
+            writeXML(object, filename);
             exists = false;
         }
         return exists;

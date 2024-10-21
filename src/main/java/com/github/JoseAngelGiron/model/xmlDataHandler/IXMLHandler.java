@@ -1,7 +1,5 @@
-package com.github.JoseAngelGiron.model.xmldatahandler;
+package com.github.JoseAngelGiron.model.xmlDataHandler;
 
-
-import java.util.List;
 
 public interface IXMLHandler<T, K> {
 

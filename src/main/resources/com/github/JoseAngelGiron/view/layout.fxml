@@ -17,7 +17,7 @@
       <ButtonBar layoutX="190.0" layoutY="-1.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="48.0" prefWidth="514.0" stylesheets="@IMG/aplication.css">
          <buttons>
             <Button fx:id="administrationButton" contentDisplay="TOP" mnemonicParsing="false" onAction="#changeToAdminArea" styleClass="button2" stylesheets="@IMG/aplication.css" text="Admin" />
-            <Button fx:id="personalAreaButton" minWidth="66.0" mnemonicParsing="false" onAction="#changeToProfile" prefHeight="26.0" styleClass="button2" stylesheets="@IMG/aplication.css" text="Perfil" />
+            <Button minWidth="66.0" mnemonicParsing="false" onAction="#changeToProfile" prefHeight="26.0" styleClass="button2" stylesheets="@IMG/aplication.css" text="Perfil" />
             <Button minWidth="55.0" mnemonicParsing="false" onAction="#changeToStart" prefHeight="26.0" styleClass="button2" stylesheets="@IMG/aplication.css" text="Inicio" />
          </buttons>
       </ButtonBar>
@@ -59,6 +59,6 @@
             </GridPane>
          </children>
       </VBox>
-      <Pane layoutX="149.0" layoutY="52.0" prefHeight="505.0" prefWidth="563.0" />
+      <Pane fx:id="mainWindow" layoutX="149.0" layoutY="52.0" prefHeight="505.0" prefWidth="563.0" />
    </children>
 </Pane>

@@ -15,9 +15,9 @@ public class test2XMLChats {
 
 
         //Chat chat = XMLManager.readXML(chatsFilePath, chatsFilePath);
-        User userTest = new User("namepepep", "prueba1234", "example@gmail.com");
-        User userTest2 = new User("name2", "prueba1234", "example@gmail.com");
-        userTest2.setId(1);
+        //User userTest = new User("namepepep", "prueba1234", "example@gmail.com");
+        //User userTest2 = new User("name2", "prueba1234", "example@gmail.com");
+        //userTest2.setId(1);
         //userList.getListOfUsers().add(userTest);
         //userList.getListOfUsers().add(userTest2);
         //XMLManager.writeXML(userList, usersFilePath);

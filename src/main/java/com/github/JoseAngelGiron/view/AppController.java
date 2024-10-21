@@ -9,7 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 
-import com.github.JoseAngelGiron.view.View;
+
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -37,7 +37,23 @@ public class AppController extends Controller implements Initializable {
 
     @Override
     public void onClose(Object output) {
-        //nothing to do
+
+    }
+
+    /**
+     * Initializes the controller after its root element has been completely processed.
+     *
+     * @param location  The location used to resolve relative paths for the root object.
+     * @param resources The resources used to localize the root object.
+     */
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        hideAdministrationButton();
+        try {
+            changeToStart();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
     /**
      * Opens a modal dialog window.
@@ -67,7 +83,7 @@ public class AppController extends Controller implements Initializable {
      */
     @FXML
     public void changeToStart() throws IOException {
-        //changeScene(Scenes.STORE, mainWindow,null);
+        changeScene(Scenes.START, mainWindow,null);
     }
 
     /**
@@ -88,21 +104,7 @@ public class AppController extends Controller implements Initializable {
         //changeScene(Scenes.ADMIN, mainWindow, null);
     }
 
-    /**
-     * Initializes the controller after its root element has been completely processed.
-     *
-     * @param location  The location used to resolve relative paths for the root object.
-     * @param resources The resources used to localize the root object.
-     */
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        hideAdministrationButton();
-        try {
-           changeToStart();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
+
     /**
      * Hides the administration button based on the user's role.
      */
