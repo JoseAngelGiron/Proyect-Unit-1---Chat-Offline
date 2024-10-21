@@ -53,10 +53,12 @@ public class LoginController extends Controller implements Initializable {
         userToLogin.setEmail(emailText.getText());
         userToLogin.setPassword((passwordText.getText()));
 
+
+
         UserHandler userHandler = new UserHandler();
         userHandler.create();
-
-        if(userHandler.findAll().ifUserExists(userToLogin)) {
+        userToLogin = userHandler.findByEmailAndPassword(userToLogin);
+        if(userToLogin.getId()>=0) {
             UserSession session = UserSession.UserSession();
             session.setUserIntoSession(userToLogin);
 

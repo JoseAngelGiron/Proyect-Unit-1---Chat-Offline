@@ -4,21 +4,49 @@
         <id>0</id>
         <username>namepepep</username>
         <email>example2@gmail.com</email>
-        <password>518c922f4c3b624717183fb2cddd828410caaee2cb90d081504149a5a04ae3c1</password>
+        <password>f7f89113ebccf9faab9292fc4e34a55c60a3b37cbf564e0331060536bba95e0f</password>
         <admin>false</admin>
     </user>
     <user>
         <id>1</id>
         <username>name2</username>
         <email>example44@gmail.com</email>
-        <password>b4023b7654a1bbc970b8415d7b1fe1e231edc1522515b6c796a1cc58ca8409b7</password>
+        <password>950fe16651234bff49b136acee4381bbaaca6c66e095dc0c871372d74ad0a248</password>
         <admin>false</admin>
     </user>
     <user>
         <id>2</id>
         <username>Pepe</username>
         <email>Jangelgiron@gmail.com</email>
-        <password>3a4c064b24b91816d6254034c7d9eb8ce971544352f7dc8f019cadb066842498</password>
+        <password>84c1092548f243c014d17fa22f336a5b7705e09bb551d4619632c67538a726a1</password>
+        <admin>false</admin>
+    </user>
+    <user>
+        <id>3</id>
+        <username>JAngel</username>
+        <email>hastaloshuevos@gmail.com</email>
+        <password>d50294417e24678b23aca060654e74ec1603f9ffc2d668f325bcf7b1febef3e0</password>
+        <admin>false</admin>
+    </user>
+    <user>
+        <id>4</id>
+        <username>Probando</username>
+        <email>CorreoDeMierda@gmail.com</email>
+        <password>fa15dc063e39625e7309d83264765b3ab89a598d496a6692ec8b6d88e551e300</password>
+        <admin>false</admin>
+    </user>
+    <user>
+        <id>5</id>
+        <username>LARG</username>
+        <email>Giron@gmail.com</email>
+        <password>c472e67f4b7355d1217a54ab62a0decd980e24cfb6aee3ab77da0c15732a55a2</password>
+        <admin>false</admin>
+    </user>
+    <user>
+        <id>6</id>
+        <username>LARG</username>
+        <email>Giron45@gmail.com</email>
+        <password>8fe058ddb8fed889db6d5ae71c77369b672b36fcd7cec454b02e8f97c9dd330c</password>
         <admin>false</admin>
     </user>
 </users>

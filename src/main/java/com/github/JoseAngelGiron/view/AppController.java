@@ -66,23 +66,16 @@ public class AppController extends Controller implements Initializable {
      * @throws IOException If an error occurs while loading the store view.
      */
     @FXML
-    public void changeStore() throws IOException {
+    public void changeToStart() throws IOException {
         //changeScene(Scenes.STORE, mainWindow,null);
     }
-    /**
-     * Changes the scene to the library view.
-     * @throws IOException If an error occurs while loading the library view.
-     */
-    @FXML
-    public void changeToLibrary() throws IOException {
-        //changeScene(Scenes.LIBRARY, mainWindow, Scenes.LIBRARY_USER);
-    }
+
     /**
      * Changes the scene to the personal area.
      * @throws IOException If an error occurs while loading the personal area view.
      */
     @FXML
-    public void changeToPersonalArea() throws IOException {
+    public void changeToProfile() throws IOException {
         //changeScene(Scenes.PROFILE, mainWindow,null);
     }
 
@@ -105,7 +98,7 @@ public class AppController extends Controller implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         hideAdministrationButton();
         try {
-            changeStore();
+           changeToStart();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -114,12 +107,12 @@ public class AppController extends Controller implements Initializable {
      * Hides the administration button based on the user's role.
      */
     public void hideAdministrationButton() {
-        /**
-         * UserSession session = UserSession.UserSession();
-         * if (!session.getUserLoggedIn().isAdmin()){
-         *    administrationButton.setVisible(false);
-         *    }
-         */
+
+         UserSession session = UserSession.UserSession();
+          if (!session.getUserLoggedIn().isAdmin()){
+            administrationButton.setVisible(false);
+           }
+
 
 
 
