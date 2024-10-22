@@ -49,7 +49,6 @@ public class StartController extends Controller implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         clickOnTable();
 
-
     }
 
 

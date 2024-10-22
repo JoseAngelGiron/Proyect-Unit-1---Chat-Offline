@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class modalController extends Controller implements Initializable {
+public class ModalController extends Controller implements Initializable {
 
     @FXML
     private Button closeButton;

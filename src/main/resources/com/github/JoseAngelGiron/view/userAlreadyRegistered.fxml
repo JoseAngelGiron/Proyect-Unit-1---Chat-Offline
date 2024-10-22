@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<VBox alignment="CENTER" maxWidth="800.0" minHeight="586.0" prefHeight="586.0" prefWidth="800.0" spacing="20.0" styleClass="little-root" stylesheets="@IMG/aplication.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.JoseAngelGiron.view.modalController">
+<VBox alignment="CENTER" maxWidth="800.0" minHeight="586.0" prefHeight="586.0" prefWidth="800.0" spacing="20.0" styleClass="little-root" stylesheets="@IMG/aplication.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.JoseAngelGiron.view.ModalController">
    <children>
       <Text fill="#1e1616" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-field" text="El nombre de usuario que ha introducido ya existe. Si ya tiene cuenta, pruebe a iniciar sesión en el sistema" wrappingWidth="424.40820932388306" />
       <GridPane prefHeight="26.0" prefWidth="483.0">

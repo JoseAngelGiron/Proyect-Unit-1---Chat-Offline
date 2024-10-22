@@ -1,6 +1,8 @@
 package com.github.JoseAngelGiron.view;
 
 import com.github.JoseAngelGiron.App;
+import com.github.JoseAngelGiron.model.entity.FriendshipRequest;
+import com.github.JoseAngelGiron.model.entity.User;
 import com.github.JoseAngelGiron.model.session.UserSession;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,13 +12,17 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 
 
+import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
+
+import static com.github.JoseAngelGiron.model.xmlDataHandler.FriendshipRequestHandler.build;
 
 
 public class AppController extends Controller implements Initializable {
@@ -26,12 +32,21 @@ public class AppController extends Controller implements Initializable {
     @FXML
     private Button administrationButton;
 
+    @FXML
+    private Label userName;
+    @FXML
+    private Label userStatus;
+
+    private User userLogged;
+
+
     public static Controller centerController;
     public static Controller modalController;
 
 
     @Override
     public void onOpen(Object input, Object data) throws IOException {
+
 
     }
 
@@ -49,12 +64,14 @@ public class AppController extends Controller implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         hideAdministrationButton();
+        setUserData();
         try {
             changeToStart();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
+
     /**
      * Opens a modal dialog window.
      * @param scene The scene to be displayed in the modal window.
@@ -96,6 +113,19 @@ public class AppController extends Controller implements Initializable {
     }
 
     /**
+     * Changes the scene to the request area.
+     * @throws IOException If an error occurs while loading the request view.
+     */
+    @FXML
+    public void changeToRequests() throws IOException {
+        List<FriendshipRequest> fr = build().findByReceiver(userLogged.getUsername());
+        if(fr != null){
+            changeScene(Scenes.REQUESTRECEIVED, mainWindow, fr);
+        }
+
+    }
+
+    /**
      * Changes the scene to the administration area.
      * @throws IOException If an error occurs while loading the administration view.
      */
@@ -118,6 +148,14 @@ public class AppController extends Controller implements Initializable {
 
 
 
+    }
+
+
+    private void setUserData(){
+        userLogged = UserSession.UserSession().getUserLoggedIn();
+
+        userName.setText(userLogged.getUsername());
+        userStatus.setText(userLogged.getStatus());
     }
 
     /**
