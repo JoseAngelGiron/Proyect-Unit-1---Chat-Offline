@@ -37,11 +37,26 @@ public class FriendshipRequestHandler implements IXMLHandler<FriendshipRequest, 
     }
 
     public List<FriendshipRequest> findBySender(String name){
+
         FriendshipRequestList listOfRequests = findAll();
         List<FriendshipRequest> userListOfRequests = new ArrayList<>();
 
         for(FriendshipRequest fr : listOfRequests.getRequests()){
             if(fr.getSender().equals(name)){
+                userListOfRequests.add(fr);
+            }
+        }
+        return userListOfRequests;
+    }
+
+    public List<FriendshipRequest> findByReceiver(String name){
+
+        FriendshipRequestList listOfRequests = findAll();
+        List<FriendshipRequest> userListOfRequests = new ArrayList<>();
+
+        for(FriendshipRequest fr : listOfRequests.getRequests()){
+
+            if(fr.getReceiver().equals(name)){
                 userListOfRequests.add(fr);
             }
         }

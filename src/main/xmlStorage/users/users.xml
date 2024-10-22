@@ -28,8 +28,8 @@
         <id>3</id>
         <username>JAngel</username>
         <email>hastaloshuevos@gmail.com</email>
-        <password>d50294417e24678b23aca060654e74ec1603f9ffc2d668f325bcf7b1febef3e0</password>
-        <status> "Hi, I'm using whatsapp !"</status>
+        <password>c4dd5df7d91df0e91f95cc512e44b3c9ae0ee573b32e65e16caa8a3449c30d72</password>
+        <status>Hi, I'm using whatsapp !</status>
         <admin>false</admin>
     </user>
     <user>
@@ -56,4 +56,5 @@
         <status> "Hi, I'm using whatsapp !"</status>
         <admin>false</admin>
     </user>
+
 </users>

@@ -19,9 +19,6 @@ public class User {
     private String status;
     private boolean admin;
 
-
-    //pruebabaaaa
-
     private FriendshipRequestList friendshipRequestList;
 
     public User() {
