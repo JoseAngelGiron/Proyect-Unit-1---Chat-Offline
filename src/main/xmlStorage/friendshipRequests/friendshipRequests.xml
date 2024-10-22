@@ -1,2 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<friendshipRequests/>
+<friendshipRequests>
+    <request>
+        <sender>LARG</sender>
+        <receiver>JAngel</receiver>
+        <status>PENDING</status>
+        <timestamp>2024-10-22T09:04:18.6827089</timestamp>
+    </request>
+</friendshipRequests>

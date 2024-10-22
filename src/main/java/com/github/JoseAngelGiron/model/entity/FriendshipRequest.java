@@ -1,11 +1,16 @@
 package com.github.JoseAngelGiron.model.entity;
 
+import com.github.JoseAngelGiron.persistance.LocalDateTimeAdapter;
+
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
 @XmlRootElement(name = "friendshipRequest")
+@XmlType(propOrder = { "sender", "receiver", "status", "timestamp"})
 public class FriendshipRequest {
 
     private String sender;
@@ -51,6 +56,7 @@ public class FriendshipRequest {
     }
 
     @XmlElement
+    @XmlJavaTypeAdapter(LocalDateTimeAdapter.class)
     public LocalDateTime getTimestamp() {
         return timestamp;
     }

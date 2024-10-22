@@ -10,4 +10,7 @@ module com.github.JoseAngelGiron {
     exports com.github.JoseAngelGiron;
     exports com.github.JoseAngelGiron.view;
     opens com.github.JoseAngelGiron.view to javafx.fxml;
+    opens com.github.JoseAngelGiron.persistance to java.xml.bind;
+
+    exports com.github.JoseAngelGiron.persistance;
 }

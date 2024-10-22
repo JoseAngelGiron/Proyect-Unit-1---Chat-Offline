@@ -12,9 +12,6 @@ public class UserHandler implements IXMLHandler<User, UserList>{
 
     private static final String usersFilePath = "C:\\Users\\the_l\\IdeaProjects\\Project-1DA\\src\\main\\xmlStorage\\users\\users.xml";
 
-
-
-
     @Override
     public UserList findAll() {
         return XMLManager.readXML(usersFilePath, UserList.class);
@@ -42,6 +39,7 @@ public class UserHandler implements IXMLHandler<User, UserList>{
         }
         return usersToReturn;
     }
+
 
     public User findByEmail(User userToCompare){
         UserList userList = findAll();
