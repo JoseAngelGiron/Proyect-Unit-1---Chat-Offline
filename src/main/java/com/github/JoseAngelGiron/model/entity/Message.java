@@ -14,6 +14,10 @@ public class Message {
     private String text;
     private LocalDateTime dateTime;
 
+    public Message(){
+
+    }
+
 
     public Message(String emisor, String receptor, String text, LocalDateTime dateTime) {
 
@@ -22,6 +26,8 @@ public class Message {
         this.text = text;
         this.dateTime = dateTime;
     }
+
+
     public int getId() {
         return id;
     }

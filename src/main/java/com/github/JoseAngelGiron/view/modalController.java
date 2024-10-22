@@ -31,6 +31,8 @@ public class modalController extends Controller implements Initializable {
 
     }
 
+
+
     /**
      * Closes the current window.
      */

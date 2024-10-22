@@ -18,8 +18,9 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import static com.github.JoseAngelGiron.model.xmlDataHandler.UserHandler.build;
+import static com.github.JoseAngelGiron.view.AppController.openModal;
 
-public class startController extends Controller implements Initializable {
+public class StartController extends Controller implements Initializable {
     @FXML
     private TextField searchBar;
 
@@ -33,6 +34,7 @@ public class startController extends Controller implements Initializable {
 
     private ObservableList<User> users;
 
+
     @Override
     public void onOpen(Object input, Object input2) throws IOException {
 
@@ -45,8 +47,12 @@ public class startController extends Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        clickOnTable();
+
 
     }
+
+
 
     @FXML
     public void searchFriends(){
@@ -72,6 +78,22 @@ public class startController extends Controller implements Initializable {
             String status = user.getStatus();
             return new SimpleStringProperty(status);
 
+        });
+    }
+
+    private void clickOnTable(){
+        resultsOfSearch.setOnMouseClicked(event -> {
+            if (event.getClickCount() == 2) {
+                User selectedUser = resultsOfSearch.getSelectionModel().getSelectedItem();
+                if (selectedUser != null) {
+                    try {
+                        openModal(Scenes.FRIENDSHIPREQUEST, "¿Desea envíar una petición de amistad?", this, selectedUser);
+
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
         });
     }
 }
