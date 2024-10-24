@@ -7,6 +7,8 @@ import com.github.JoseAngelGiron.persistance.XMLManager;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.github.JoseAngelGiron.model.xmlDataHandler.ContactListHandler.build;
+
 
 public class UserHandler implements IXMLHandler<User, UserList>{
 
@@ -18,13 +20,17 @@ public class UserHandler implements IXMLHandler<User, UserList>{
     }
 
 
-    public User findByID(User user){
+    public User findByID(int id){
         UserList userList = findAll();
-        for(User user1: userList.getListOfUsers()){
-            //user.
-        }
+        User userToReturn = new User();
 
-        return user;
+        for(User user: userList.getListOfUsers()){
+            if(user.getId() == id){
+                userToReturn = user;
+                break;
+            }
+        }
+        return userToReturn;
     }
 
     public List<User> findByName(String name, User yourself){
@@ -148,7 +154,11 @@ public class UserHandler implements IXMLHandler<User, UserList>{
      *
      * @return A new instance of the UserHandler class.
      */
-    public static UserHandler build(){
-        return new UserHandler();
-    }
+
+     public static UserHandler build(){
+         return new UserHandler();
+     }
+
+
+
 }

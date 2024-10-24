@@ -4,6 +4,8 @@ import com.github.JoseAngelGiron.App;
 import com.github.JoseAngelGiron.model.entity.FriendshipRequest;
 import com.github.JoseAngelGiron.model.entity.User;
 import com.github.JoseAngelGiron.model.session.UserSession;
+import com.github.JoseAngelGiron.model.xmlDataHandler.ContactListHandler;
+import com.github.JoseAngelGiron.model.xmlDataHandler.FriendshipRequestHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -55,7 +57,7 @@ public class AppController extends Controller implements Initializable {
 
     }
 
-    /**
+    /** //recomentar
      * Initializes the controller after its root element has been completely processed.
      *
      * @param location  The location used to resolve relative paths for the root object.
@@ -63,6 +65,13 @@ public class AppController extends Controller implements Initializable {
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        UserSession userSession = UserSession.UserSession();
+        User userLogged = userSession.getUserLoggedIn();
+
+
+        ContactListHandler contactListHandler = new ContactListHandler();
+        contactListHandler.create(userLogged.getUsername(), userLogged.getId());
+
         hideAdministrationButton();
         setUserData();
         try {
@@ -118,7 +127,10 @@ public class AppController extends Controller implements Initializable {
      */
     @FXML
     public void changeToRequests() throws IOException {
-        List<FriendshipRequest> fr = build().findByReceiver(userLogged.getUsername());
+        FriendshipRequestHandler friendshipRequestHandler = new FriendshipRequestHandler();
+        friendshipRequestHandler.create();
+
+        List<FriendshipRequest> fr = friendshipRequestHandler.findByReceiver(userLogged.getUsername());
         if(fr != null){
             changeScene(Scenes.REQUESTRECEIVED, mainWindow, fr);
         }
@@ -141,13 +153,9 @@ public class AppController extends Controller implements Initializable {
     public void hideAdministrationButton() {
 
          UserSession session = UserSession.UserSession();
-          if (!session.getUserLoggedIn().isAdmin()){
-            administrationButton.setVisible(false);
-           }
-
-
-
-
+          if (!session.getUserLoggedIn().isAdmin()) {
+              administrationButton.setVisible(false);
+          }
     }
 
 

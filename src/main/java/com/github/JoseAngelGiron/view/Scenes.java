@@ -10,7 +10,8 @@ public enum Scenes {
     START("view/start"),
     FRIENDSHIPREQUEST("view/sendFriendshipRequest"),
 
-    REQUESTRECEIVED("view/requestsReceived");
+    REQUESTRECEIVED("view/requestsReceived"),
+    ACCEPTANDREJECT("view/acceptAndReject");
 
 
 

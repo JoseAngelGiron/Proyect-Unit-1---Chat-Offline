@@ -1,6 +1,7 @@
 package com.github.JoseAngelGiron.model.entity;
 
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 import java.util.ArrayList;
@@ -9,12 +10,12 @@ import java.util.Objects;
 
 
 @XmlRootElement(name = "ContactList")
-@XmlType(propOrder = { "id", "nameOfUser", "names"})
+@XmlType(propOrder = { "id", "nameOfUser", "contacts"})
 public class ContactList {
 
     private int id;
     private String nameOfUser;
-    private List<String> names;
+    private List<Contact> contacts;
 
     public ContactList() {
 
@@ -24,7 +25,7 @@ public class ContactList {
     public ContactList(int id, String nameOfUser) {
         this.id = id;
         this.nameOfUser = nameOfUser;
-        this.names = new ArrayList<>();
+        this.contacts = new ArrayList<>();
     }
 
     @XmlElement
@@ -44,13 +45,14 @@ public class ContactList {
         this.nameOfUser = nameOfUser;
     }
 
+    @XmlElementWrapper
     @XmlElement
-    public List<String> getNames() {
-        return names;
+    public List<Contact> getContacts() {
+        return contacts;
     }
 
-    public void setNames(List<String> names) {
-        this.names = names;
+    public void setContacts(List<Contact> contacts) {
+        this.contacts = contacts;
     }
 
     @Override

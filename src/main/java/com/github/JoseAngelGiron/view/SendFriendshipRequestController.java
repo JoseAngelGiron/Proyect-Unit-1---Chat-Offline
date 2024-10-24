@@ -4,6 +4,7 @@ import com.github.JoseAngelGiron.model.entity.FriendshipRequest;
 import com.github.JoseAngelGiron.model.entity.User;
 import com.github.JoseAngelGiron.model.session.UserSession;
 import com.github.JoseAngelGiron.model.xmlDataHandler.FriendshipRequestHandler;
+import com.github.JoseAngelGiron.model.xmlDataHandler.ContactListHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -46,13 +47,14 @@ public class SendFriendshipRequestController extends Controller implements Initi
 
     @FXML
     public void sendRequest(){
-        String actualUsername = UserSession.UserSession().getUserLoggedIn().getUsername();
-        FriendshipRequest friendshipRequest = new FriendshipRequest(actualUsername, userToSendRequest.getUsername());
+        User user = UserSession.UserSession().getUserLoggedIn();
+        FriendshipRequest friendshipRequest = new FriendshipRequest(user.getUsername(), user.getId(), userToSendRequest.getUsername());
 
         FriendshipRequestHandler fr = new FriendshipRequestHandler();
 
         fr.create();
         if(fr.save(friendshipRequest).getSender()==null){
+
             errorLabel.setVisible(true);
         }else{
             closeWindow();

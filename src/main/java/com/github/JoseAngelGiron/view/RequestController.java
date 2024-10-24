@@ -7,9 +7,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.IOException;
 import java.net.URL;
@@ -17,6 +16,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.ResourceBundle;
+
+import static com.github.JoseAngelGiron.view.AppController.openModal;
 
 public class RequestController extends Controller implements Initializable {
 
@@ -98,7 +99,20 @@ public class RequestController extends Controller implements Initializable {
             return new SimpleStringProperty(formattedDate);
         });
 
+        friendshipRequestTableView.setOnMouseClicked(event -> {
+            if (event.getClickCount() == 2) {
+                FriendshipRequest selectedRequest = friendshipRequestTableView.getSelectionModel().getSelectedItem();
+                if (selectedRequest != null) {
+                    try {
+                        openModal(Scenes.ACCEPTANDREJECT, "¿Deseas aceptar la petición?", this, selectedRequest);
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+            }
+        });
+
+
+
     }
-
-
 }
