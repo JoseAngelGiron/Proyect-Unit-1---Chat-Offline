@@ -2,8 +2,9 @@
 <friendshipRequests>
     <request>
         <sender>LARG</sender>
+        <idSender>6</idSender>
         <receiver>JAngel</receiver>
         <status>PENDING</status>
-        <timestamp>2024-10-22T09:04:18.6827089</timestamp>
+        <timestamp>2024-10-24T09:55:40.4471808</timestamp>
     </request>
 </friendshipRequests>

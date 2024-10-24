@@ -1,11 +1,11 @@
 package com.github.JoseAngelGiron.model.xmlDataHandler;
 
-public interface IContactListHandler<T, K> {
+public interface IContactListHandler<T, K, J> {
 
-    K findAll(T name);
-    String save(T entity);
+    K findAll(J name);
+    T save(J entity, T entity2);
     boolean update(T entity);
     boolean delete(String name);
-    boolean create(T name, int id);
+    boolean create(J name, int id);
 
 }

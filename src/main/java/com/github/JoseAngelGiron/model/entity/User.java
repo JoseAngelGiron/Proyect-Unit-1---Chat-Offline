@@ -2,6 +2,7 @@ package com.github.JoseAngelGiron.model.entity;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 import java.util.Objects;
 
@@ -18,7 +19,7 @@ public class User {
     private String email;
     private String status;
     private boolean admin;
-
+    private ContactList contactList;
     private FriendshipRequestList friendshipRequestList;
 
     public User() {
@@ -88,6 +89,15 @@ public class User {
 
     public void setAdmin(boolean admin) {
         this.admin = admin;
+    }
+
+    @XmlTransient
+    public ContactList getContactList() {
+        return contactList;
+    }
+
+    public void setContactList(ContactList contactList) {
+        this.contactList = contactList;
     }
 
     @Override

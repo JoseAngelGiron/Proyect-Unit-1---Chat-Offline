@@ -9,9 +9,9 @@
    <children>
       <TableView fx:id="friendshipRequestTableView" layoutX="11.0" layoutY="30.0" prefHeight="529.0" prefWidth="701.0">
         <columns>
-          <TableColumn fx:id="nameUser" prefWidth="180.79999387264252" resizable="false" text="Petición de" />
-          <TableColumn fx:id="userStatus" minWidth="0.0" prefWidth="196.0" resizable="false" text="Estado" />
-            <TableColumn fx:id="localDateTimeRequestTableColumn" minWidth="0.0" prefWidth="196.0" resizable="false" text="Fecha de envio" />
+          <TableColumn fx:id="nameUser" prefWidth="208.7999906539917" resizable="false" text="Petición de" />
+          <TableColumn fx:id="userStatus" minWidth="0.0" prefWidth="137.6000213623047" resizable="false" text="Estado" />
+            <TableColumn fx:id="localDateTimeRequestTableColumn" minWidth="0.0" prefWidth="196.800048828125" resizable="false" text="Fecha de envio" />
         </columns>
       </TableView>
       <Label fx:id="labelRequests" layoutX="11.0" layoutY="6.0" prefHeight="17.0" prefWidth="376.0" text="Estas son las peticiones de amistad que tienes actualmente:" />
