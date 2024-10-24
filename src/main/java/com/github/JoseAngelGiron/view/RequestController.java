@@ -2,13 +2,17 @@ package com.github.JoseAngelGiron.view;
 
 import com.github.JoseAngelGiron.model.entity.FriendshipRequest;
 
+import com.github.JoseAngelGiron.model.session.UserSession;
+import com.github.JoseAngelGiron.model.xmlDataHandler.FriendshipRequestHandler;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
@@ -38,6 +42,7 @@ public class RequestController extends Controller implements Initializable {
 
     private ObservableList<FriendshipRequest> friendshipRequests;
     private List<FriendshipRequest> friendshipRequestsReceived;
+    private Timeline timeline;
 
 
 
@@ -46,8 +51,10 @@ public class RequestController extends Controller implements Initializable {
     public void onOpen(Object input, Object input2) throws IOException {
 
         friendshipRequestsReceived = (List<FriendshipRequest>) input;
-
         changeLabel();
+        timeline.play();
+
+
 
     }
 
@@ -58,7 +65,8 @@ public class RequestController extends Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        timeline = new Timeline(new KeyFrame(Duration.seconds(5), event -> refreshRequestTable())); // Cada 5 segundos
+        timeline.setCycleCount(Timeline.INDEFINITE);
 
     }
 
@@ -112,7 +120,19 @@ public class RequestController extends Controller implements Initializable {
             }
         });
 
+    }
 
 
+    private void refreshRequestTable() {
+
+        List<FriendshipRequest> updatedRequests = getUpdatedFriendshipRequests();
+        showRequests(updatedRequests);
+    }
+
+
+    private List<FriendshipRequest> getUpdatedFriendshipRequests() {
+        FriendshipRequestHandler friendshipRequestHandler = new FriendshipRequestHandler();
+        friendshipRequestHandler.findByReceiver(UserSession.UserSession().getUserLoggedIn().getUsername());
+        return friendshipRequestsReceived; //
     }
 }

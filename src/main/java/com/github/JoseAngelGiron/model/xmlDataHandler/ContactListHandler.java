@@ -14,7 +14,7 @@ public class ContactListHandler implements IContactListHandler<Contact, ContactL
 
     public Contact findByID(String UserName, int idSender){
         Contact contactToReturn = new Contact();
-        ContactList contactList = findAll(UserName);
+        ContactList contactList = findAll(UserName+"-"+idSender);
 
         for (Contact contact: contactList.getContacts()) {
             if(contact.getId() == idSender) {
@@ -26,10 +26,13 @@ public class ContactListHandler implements IContactListHandler<Contact, ContactL
     }
 
 
+
+
+
     @Override
     public Contact save(String entity, Contact entity2) {
         Contact contactToReturn = new Contact();
-        ContactList contactList = findAll(entity);
+        ContactList contactList = findAll(entity+"-"+entity2.getId());
 
 
         if (!contactList.getContacts().contains(entity2)) {
@@ -57,7 +60,7 @@ public class ContactListHandler implements IContactListHandler<Contact, ContactL
     public boolean create(String name, int id) {
         ContactList contactList = new ContactList(id, name);
 
-        return XMLManager.createXML(contactList, contactListFilePath+name+".xml");
+        return XMLManager.createXML(contactList, contactListFilePath+name+"-"+id+".xml");
     }
 
     public static ContactListHandler build(){

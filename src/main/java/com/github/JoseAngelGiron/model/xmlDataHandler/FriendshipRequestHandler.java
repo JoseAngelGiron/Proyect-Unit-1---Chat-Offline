@@ -1,9 +1,9 @@
 package com.github.JoseAngelGiron.model.xmlDataHandler;
 
-import com.github.JoseAngelGiron.model.entity.FriendshipRequest;
-import com.github.JoseAngelGiron.model.entity.FriendshipRequestList;
+import com.github.JoseAngelGiron.model.entity.*;
 
 import com.github.JoseAngelGiron.persistance.XMLManager;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,20 +20,51 @@ public class FriendshipRequestHandler implements IXMLHandler<FriendshipRequest, 
     @Override
     public FriendshipRequest save(FriendshipRequest entity) {
 
+
         FriendshipRequest friendshipRequest = new FriendshipRequest();
-        FriendshipRequestList friendshipRequestList = findAll();
+        if(checkIfContactExists(entity)){
+            FriendshipRequestList friendshipRequestList = findAll();
 
-        if( friendshipRequestList.addRequest(entity) ){
+            if( friendshipRequestList.addRequest(entity) ){
 
-            XMLManager.writeXML(friendshipRequestList, friendshipFilePath);
-            friendshipRequest = entity;
+                XMLManager.writeXML(friendshipRequestList, friendshipFilePath);
+                friendshipRequest = entity;
+            }
         }
+
         return friendshipRequest;
+    }
+
+    private boolean checkIfContactExists(FriendshipRequest entity){
+        ContactListHandler contactListHandler = new ContactListHandler();
+
+        ContactList contactList = contactListHandler.findAll(entity.getSender()+"-"+entity.getIdSender());
+        boolean contactAlreadyExists= false;
+        for (Contact contact: contactList.getContacts()){
+
+            if(contact.getId()==entity.getIdSender()){
+                System.out.println(contact.getNameOfContact());
+                contactAlreadyExists = true;
+                break;
+            }
+        }
+        return contactAlreadyExists;
     }
 
     @Override
     public boolean update(FriendshipRequest entity) {
-        return false;
+        FriendshipRequestList listOfRequests = findAll();
+        boolean updated = false;
+        for(FriendshipRequest friendshipRequest: listOfRequests.getRequests()){
+            if(friendshipRequest.equals(entity)){
+                friendshipRequest.setStatus(entity.getStatus());
+                friendshipRequest.setTimestamp(entity.getTimestamp());
+                updated = true;
+                break;
+
+            }
+        }
+        return updated;
     }
 
     public List<FriendshipRequest> findBySender(String name){

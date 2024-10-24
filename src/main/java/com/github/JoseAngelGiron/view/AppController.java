@@ -1,11 +1,16 @@
 package com.github.JoseAngelGiron.view;
 
 import com.github.JoseAngelGiron.App;
+import com.github.JoseAngelGiron.model.entity.ContactList;
 import com.github.JoseAngelGiron.model.entity.FriendshipRequest;
 import com.github.JoseAngelGiron.model.entity.User;
 import com.github.JoseAngelGiron.model.session.UserSession;
 import com.github.JoseAngelGiron.model.xmlDataHandler.ContactListHandler;
 import com.github.JoseAngelGiron.model.xmlDataHandler.FriendshipRequestHandler;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -15,20 +20,26 @@ import javafx.scene.control.Button;
 
 
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.Set;
 
-import static com.github.JoseAngelGiron.model.xmlDataHandler.FriendshipRequestHandler.build;
+import static com.github.JoseAngelGiron.model.xmlDataHandler.UserHandler.build;
 
 
 public class AppController extends Controller implements Initializable {
-
     @FXML
     private Pane mainWindow;
     @FXML
@@ -39,7 +50,20 @@ public class AppController extends Controller implements Initializable {
     @FXML
     private Label userStatus;
 
+    @FXML
+    private TableView<User> contacts;
+
+    @FXML
+    private TableColumn<User, String> nameUsers;
+    @FXML
+    private TableColumn<User, ImageView> photoUsers;
+
+    @FXML
+    private ImageView photoUser;
+
     private User userLogged;
+    private ContactListHandler contactListHandler;
+    private ObservableList<User> usersToShow;
 
 
     public static Controller centerController;
@@ -69,11 +93,12 @@ public class AppController extends Controller implements Initializable {
         User userLogged = userSession.getUserLoggedIn();
 
 
-        ContactListHandler contactListHandler = new ContactListHandler();
+        contactListHandler = new ContactListHandler();
         contactListHandler.create(userLogged.getUsername(), userLogged.getId());
 
         hideAdministrationButton();
         setUserData();
+        setContacts();
         try {
             changeToStart();
         } catch (IOException e) {
@@ -164,6 +189,44 @@ public class AppController extends Controller implements Initializable {
 
         userName.setText(userLogged.getUsername());
         userStatus.setText(userLogged.getStatus());
+
+        File photo = new File(userLogged.getPhoto());
+        Image profileImage = new Image(photo.toURI().toString());
+        photoUser.setImage(profileImage);
+    }
+
+
+    private void setContacts(){
+
+        ContactList contactList = contactListHandler.findAll(userLogged.getUsername()+"-"+userLogged.getId());
+
+        Set<User> usersInContact = build().findListOfUsersByID(contactList);
+
+        System.out.println("Usuarios en contacto encontrados: ");
+        for (User user : usersInContact) {
+            System.out.println("Usuario: " + user.getUsername() + " | Foto: " + user.getPhoto());
+        }
+
+        usersToShow = FXCollections.observableArrayList(usersInContact);
+        contacts.setItems(usersToShow);
+
+        nameUsers.setCellValueFactory(cellData -> {
+            User user = cellData.getValue();
+            String name = user.getUsername();
+            return new SimpleStringProperty(name);
+
+        });
+
+        photoUsers.setCellValueFactory(cellData -> {
+            User user = cellData.getValue();
+            File photo = new File(user.getPhoto());
+            Image imageToShow = new Image(photo.toURI().toString());
+            ImageView imageView = new ImageView(imageToShow);
+            imageView.setFitWidth(50);
+            imageView.setFitHeight(50);
+
+            return new SimpleObjectProperty<>(imageView);
+        });
     }
 
     /**

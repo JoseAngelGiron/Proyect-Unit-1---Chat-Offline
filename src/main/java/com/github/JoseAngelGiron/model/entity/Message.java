@@ -3,12 +3,13 @@ package com.github.JoseAngelGiron.model.entity;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 @XmlRootElement(name = "message")
-@XmlType(propOrder = { "id", "emisor", "receptor", "text", "dateTime" })
+@XmlType(propOrder = {  "emisor", "receptor", "text", "dateTime" })
 public class Message {
 
-    private int id;
+
     private String emisor; //Para BBBD usar USER
     private String receptor; //Para BBBD usar USER
     private String text;
@@ -27,14 +28,6 @@ public class Message {
         this.dateTime = dateTime;
     }
 
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getText() {
         return text;
@@ -74,5 +67,18 @@ public class Message {
 
     public void setDateTime(LocalDateTime dateTime) {
         this.dateTime = dateTime;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Message)) return false;
+        Message message = (Message) o;
+        return Objects.equals(emisor, message.emisor) && Objects.equals(receptor, message.receptor);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(emisor, receptor);
     }
 }

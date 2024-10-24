@@ -1,11 +1,15 @@
 package com.github.JoseAngelGiron.model.xmlDataHandler;
 
+import com.github.JoseAngelGiron.model.entity.Contact;
+import com.github.JoseAngelGiron.model.entity.ContactList;
 import com.github.JoseAngelGiron.model.entity.User;
 import com.github.JoseAngelGiron.model.entity.UserList;
 import com.github.JoseAngelGiron.persistance.XMLManager;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static com.github.JoseAngelGiron.model.xmlDataHandler.ContactListHandler.build;
 
@@ -20,14 +24,28 @@ public class UserHandler implements IXMLHandler<User, UserList>{
     }
 
 
+    public Set<User> findListOfUsersByID(ContactList contactList){
+        UserList userList = findAll();
+
+        Set<User> listToReturn = new HashSet<>();
+        for(Contact contact : contactList.getContacts()){
+
+            for(User user: userList.getListOfUsers()) {
+                if(contact.getId()==user.getId()){
+                    listToReturn.add(user);
+                }
+            }
+        }
+
+        return listToReturn;
+    }
+
     public User findByID(int id){
         UserList userList = findAll();
         User userToReturn = new User();
-
         for(User user: userList.getListOfUsers()){
-            if(user.getId() == id){
+            if(user.getId()==id){
                 userToReturn = user;
-                break;
             }
         }
         return userToReturn;
