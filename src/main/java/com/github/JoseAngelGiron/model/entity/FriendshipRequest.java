@@ -10,14 +10,14 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 
 @XmlRootElement(name = "friendshipRequest")
-@XmlType(propOrder = { "sender", "idSender", "receiver", "status", "timestamp"})
+@XmlType(propOrder = { "sender", "idSender", "receiver", "status", "date"})
 public class FriendshipRequest {
 
     private String sender;
     private int idSender;
     private String receiver;
     private FriendshipRequestStatus status;
-    private LocalDateTime timestamp;
+    private LocalDateTime date;
 
 
     public FriendshipRequest() {
@@ -29,7 +29,7 @@ public class FriendshipRequest {
         this.idSender = idSender;
         this.receiver = receiver;
         this.status = FriendshipRequestStatus.PENDING;
-        this.timestamp = LocalDateTime.now();
+        this.date = LocalDateTime.now();
 
     }
 
@@ -70,12 +70,12 @@ public class FriendshipRequest {
 
     @XmlElement
     @XmlJavaTypeAdapter(LocalDateTimeAdapter.class)
-    public LocalDateTime getTimestamp() {
-        return timestamp;
+    public LocalDateTime getDate() {
+        return date;
     }
 
-    public void setTimestamp(LocalDateTime timestamp) {
-        this.timestamp = timestamp;
+    public void setDate(LocalDateTime date) {
+        this.date = date;
     }
 
     @Override
@@ -97,7 +97,7 @@ public class FriendshipRequest {
                 "sender='" + sender + '\'' +
                 ", receiver='" + receiver + '\'' +
                 ", status='" + status + '\'' +
-                ", timestamp=" + timestamp +
+                ", timestamp=" + date +
                 '}';
     }
 }

@@ -6,7 +6,7 @@ import com.github.JoseAngelGiron.model.entity.FriendshipRequestStatus;
 import com.github.JoseAngelGiron.model.entity.User;
 import com.github.JoseAngelGiron.model.session.UserSession;
 import com.github.JoseAngelGiron.model.xmlDataHandler.ContactListHandler;
-import com.github.JoseAngelGiron.model.xmlDataHandler.FriendshipRequestHandler;
+
 import com.github.JoseAngelGiron.model.xmlDataHandler.UserHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -19,7 +19,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import static com.github.JoseAngelGiron.model.entity.FriendshipRequestStatus.REJECTED;
+
 import static com.github.JoseAngelGiron.model.xmlDataHandler.FriendshipRequestHandler.build;
 
 
