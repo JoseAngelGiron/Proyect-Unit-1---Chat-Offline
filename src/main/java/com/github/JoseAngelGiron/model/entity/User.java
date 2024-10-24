@@ -10,7 +10,7 @@ import static com.github.JoseAngelGiron.model.security.Security.encryptPassword;
 
 
 @XmlRootElement(name = "user")
-@XmlType(propOrder = { "id", "username", "email", "password" ,"status", "admin"})
+@XmlType(propOrder = { "id", "username", "email", "password" ,"status", "admin", "photo"})
 public class User {
 
     private int id;
@@ -19,6 +19,7 @@ public class User {
     private String email;
     private String status;
     private boolean admin;
+    private String photo;
     private ContactList contactList;
     private FriendshipRequestList friendshipRequestList;
 
@@ -32,6 +33,7 @@ public class User {
         setPassword(password);
         this.email = email;
         this.status = status;
+        this.photo = "C:\\Users\\the_l\\IdeaProjects\\Project-1DA\\src\\main\\resources\\com\\github\\JoseAngelGiron\\view\\assets\\Huevito.png";
     }
 
 
@@ -89,6 +91,15 @@ public class User {
 
     public void setAdmin(boolean admin) {
         this.admin = admin;
+    }
+
+    @XmlElement
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 
     @XmlTransient

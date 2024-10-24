@@ -6,6 +6,7 @@ import com.github.JoseAngelGiron.model.entity.FriendshipRequestStatus;
 import com.github.JoseAngelGiron.model.entity.User;
 import com.github.JoseAngelGiron.model.session.UserSession;
 import com.github.JoseAngelGiron.model.xmlDataHandler.ContactListHandler;
+import com.github.JoseAngelGiron.model.xmlDataHandler.FriendshipRequestHandler;
 import com.github.JoseAngelGiron.model.xmlDataHandler.UserHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -18,7 +19,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-
+import static com.github.JoseAngelGiron.model.entity.FriendshipRequestStatus.REJECTED;
+import static com.github.JoseAngelGiron.model.xmlDataHandler.FriendshipRequestHandler.build;
 
 
 public class AcceptAndRejectController extends Controller implements Initializable {
@@ -59,17 +61,15 @@ public class AcceptAndRejectController extends Controller implements Initializab
 
 
         if(user.getId()>=0){
-            System.out.println(user.getId());
-
             contactListHandler.save(userLogged.getUsername(), new Contact(user.getId(), user.getUsername()));
             contactListHandler.create(friendshipRequest.getSender(), friendshipRequest.getIdSender());
             contactListHandler.save(friendshipRequest.getSender(),new Contact(userLogged.getId(), userLogged.getUsername()));
+            friendshipRequest.setStatus(FriendshipRequestStatus.ACCEPTED);
+            build().update(friendshipRequest);
             close();
         }else{
-            Contact contactToSave = new Contact(friendshipRequest.getIdSender(), friendshipRequest.getSender());
-            contactListHandler.save(userLogged.getUsername(), contactToSave);
+            close();
         }
-
     }
 
     @FXML
