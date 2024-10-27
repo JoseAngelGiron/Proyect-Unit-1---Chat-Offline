@@ -46,15 +46,6 @@
         <photo>C:\Users\the_l\IdeaProjects\Project-1DA\src\main\resources\com\github\JoseAngelGiron\view\assets\Huevito.png</photo>
     </user>
     <user>
-        <id>5</id>
-        <username>LARG</username>
-        <email>Giron@gmail.com</email>
-        <password>c472e67f4b7355d1217a54ab62a0decd980e24cfb6aee3ab77da0c15732a55a2</password>
-        <status> "Hi, I'm using whatsapp !"</status>
-        <admin>false</admin>
-        <photo>C:\Users\the_l\IdeaProjects\Project-1DA\src\main\resources\com\github\JoseAngelGiron\view\assets\Huevito.png</photo>
-    </user>
-    <user>
         <id>6</id>
         <username>LARG</username>
         <email>Giron45@gmail.com</email>
@@ -63,13 +54,5 @@
         <admin>false</admin>
         <photo>C:\Users\the_l\IdeaProjects\Project-1DA\src\main\resources\com\github\JoseAngelGiron\view\assets\Huevito.png</photo>
     </user>
-    <user>
-        <id>7</id>
-        <username>NewUser</username>
-        <email>jangelg@gmail.com</email>
-        <password>7d86d087b539d7662c61670749c8b830dd1ab9266e0f4344fdb207829b258a84</password>
-        <status>Hi, I'm using whatsapp !</status>
-        <admin>false</admin>
-        <photo>C:\Users\the_l\IdeaProjects\Project-1DA\src\main\resources\com\github\JoseAngelGiron\view\assets\Huevito.png</photo>
-    </user>
+
 </users>

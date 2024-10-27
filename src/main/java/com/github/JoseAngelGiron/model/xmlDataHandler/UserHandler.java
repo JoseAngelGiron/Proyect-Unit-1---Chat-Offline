@@ -64,6 +64,20 @@ public class UserHandler implements IXMLHandler<User, UserList>{
         return usersToReturn;
     }
 
+    public boolean findByName(String name){
+        UserList userList = findAll();
+        boolean userFind = false;
+
+        for(User user: userList.getListOfUsers()){
+            if (user.getUsername().equalsIgnoreCase(name)) {
+                userFind = true;
+                break;
+            }
+
+        }
+        return userFind;
+    }
+
 
     public User findByEmail(User userToCompare){
         UserList userList = findAll();
