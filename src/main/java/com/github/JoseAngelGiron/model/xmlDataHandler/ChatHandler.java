@@ -28,10 +28,9 @@ public class ChatHandler implements IChatHandler<Message, Chat> {
         if(!chat.getMessages().contains(entity)){
             chat.getMessages().add(entity);
             messageToReturn = entity;
+            XMLManager.writeXML(chat,chat.getFilePath());
         }
 
-        XMLManager.writeXML(chat,chatFilePath + userLogged.getUsername() + "-" +
-                userLogged.getId() + "_" + userToWrite.getUsername() + "-" + userToWrite.getId() + ".xml");
 
         return messageToReturn;
     }
@@ -57,7 +56,7 @@ public class ChatHandler implements IChatHandler<Message, Chat> {
                 }
             }
         }
-
+        System.out.println("Numero del ultimo mensaje: "+numberToReturn+1);
         return numberToReturn+1;
 
     }
@@ -75,6 +74,7 @@ public class ChatHandler implements IChatHandler<Message, Chat> {
         for (File file : files) {
             if (file.getName().contains(idUserLogged) && file.getName().contains(idUserReceived)) {
                 chatToReturn = XMLManager.readXML(chatToReturn, file.getPath());
+                chatToReturn.setFilePath(file.getAbsolutePath());
                 break;
             }
 
@@ -83,10 +83,13 @@ public class ChatHandler implements IChatHandler<Message, Chat> {
 
     }
 
+
     @Override
     public boolean create (User userLogged, User userReceived){
         Chat chat = new Chat(userLogged.getUsername(), userReceived.getUsername());
-        return XMLManager.createXML(chat, chatFilePath + userLogged.getUsername() + "-" +
+        chat.setFilePath(chatFilePath + userLogged.getUsername() + "-" +
                 userLogged.getId() + "_" + userReceived.getUsername() + "-" + userReceived.getId() + ".xml");
+
+        return XMLManager.createXML(chat, chat.getFilePath());
     }
 }

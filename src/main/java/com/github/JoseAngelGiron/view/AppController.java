@@ -209,8 +209,6 @@ public class AppController extends Controller implements Initializable {
 
         Set<User> usersInContact = build().findListOfUsersByID(contactList);
 
-
-
         usersToShow = FXCollections.observableArrayList(usersInContact);
         contacts.setItems(usersToShow);
 
@@ -231,7 +229,6 @@ public class AppController extends Controller implements Initializable {
 
             return new SimpleObjectProperty<>(imageView);
         });
-
 
         contacts.setOnMouseClicked(event -> {
             if (event.getClickCount() == 2) {

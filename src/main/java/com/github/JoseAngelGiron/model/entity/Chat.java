@@ -10,12 +10,13 @@ import java.util.Objects;
 import java.util.Set;
 
 @XmlRootElement(name = "Chat")
-@XmlType(propOrder = {"userParticipant1", "userParticipant2", "messages" })
+@XmlType(propOrder = {"userParticipant1", "userParticipant2", "filePath", "messages",  })
 public class Chat {
 
     private ArrayList<Message> messages;
     private String userParticipant1;
     private String userParticipant2;
+    private String filePath;
 
 
     public Chat() {
@@ -54,6 +55,15 @@ public class Chat {
 
     public void setUserParticipant2(String userParticipant2) {
         this.userParticipant2 = userParticipant2;
+    }
+
+    @XmlElement
+    public String getFilePath() {
+        return filePath;
+    }
+
+    public void setFilePath(String filePath) {
+        this.filePath = filePath;
     }
 
     @Override

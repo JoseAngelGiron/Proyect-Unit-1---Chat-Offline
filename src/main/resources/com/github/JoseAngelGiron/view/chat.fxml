@@ -69,5 +69,21 @@
             <Separator prefHeight="6.0" prefWidth="550.0" GridPane.rowIndex="1" />
          </children>
       </GridPane>
+      <GridPane layoutX="31.0" layoutY="432.0" prefHeight="38.0" prefWidth="550.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="220.59996337890624" minWidth="10.0" prefWidth="220.59996337890624" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="197.20001220703125" minWidth="10.0" prefWidth="89.40003662109376" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="166.8" minWidth="10.0" prefWidth="166.8" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="108.4000244140625" minWidth="10.0" prefWidth="35.599999999999966" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="101.199951171875" minWidth="10.0" prefWidth="66.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Button mnemonicParsing="false" onAction="#generateConversation" prefHeight="26.0" prefWidth="206.0" text="Exportar conversación" />
+            <Button mnemonicParsing="false" onAction="#analyzeConversation" text="Analisis de conversación" GridPane.columnIndex="2" />
+         </children>
+      </GridPane>
    </children>
 </Pane>
