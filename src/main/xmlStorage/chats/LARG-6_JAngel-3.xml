@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Chat>
+    <userParticipant1>LARG</userParticipant1>
+    <userParticipant2>JAngel</userParticipant2>
+    <filePath>C:\Users\the_l\IdeaProjects\Project-1DA\src\main\xmlStorage\chats\LARG-6_JAngel-3.xml</filePath>
+    <messages>
+        <message>
+            <id>1</id>
+            <sender>JAngel</sender>
+            <receiver>LARG</receiver>
+            <text>fgfjh</text>
+            <dateTime>2024-10-25T01:35:40.5694541</dateTime>
+        </message>
+        <message>
+            <id>2</id>
+            <sender>JAngel</sender>
+            <receiver>LARG</receiver>
+            <text>Porbaa</text>
+            <dateTime>2024-10-25T01:44:56.3924933</dateTime>
+        </message>
+        <message>
+            <id>3</id>
+            <sender>JAngel</sender>
+            <receiver>LARG</receiver>
+            <text>PRUEBA</text>
+            <dateTime>2024-10-27T08:28:16.5679544</dateTime>
+        </message>
+        <message>
+            <id>4</id>
+            <sender>JAngel</sender>
+            <receiver>LARG</receiver>
+            <text>2222</text>
+            <dateTime>2024-10-27T08:28:26.4625748</dateTime>
+        </message>
+        <message>
+            <id>5</id>
+            <sender>LARG</sender>
+            <receiver>JAngel</receiver>
+            <text>Aqui debería</text>
+            <dateTime>2024-10-27T08:30:42.0165061</dateTime>
+        </message>
+        <message>
+            <id>6</id>
+            <sender>LARG</sender>
+            <receiver>JAngel</receiver>
+            <text>Otra prueba mas</text>
+            <dateTime>2024-10-27T08:34:56.5688786</dateTime>
+        </message>
+        <message>
+            <id>7</id>
+            <sender>JAngel</sender>
+            <receiver>LARG</receiver>
+            <text>Siguiente prueba</text>
+            <dateTime>2024-10-27T08:52:36.2849208</dateTime>
+        </message>
+        <message>
+            <id>8</id>
+            <sender>JAngel</sender>
+            <receiver>LARG</receiver>
+            <text>Cambio de usuario</text>
+            <dateTime>2024-10-27T08:52:47.0035107</dateTime>
+        </message>
+        <message>
+            <id>9</id>
+            <sender>LARG</sender>
+            <receiver>JAngel</receiver>
+            <text>NEXT</text>
+            <dateTime>2024-10-27T08:53:40.214191</dateTime>
+        </message>
+        <message>
+            <id>10</id>
+            <sender>LARG</sender>
+            <receiver>JAngel</receiver>
+            <text>ok?</text>
+            <dateTime>2024-10-27T08:53:47.964272</dateTime>
+        </message>
+    </messages>
+</Chat>

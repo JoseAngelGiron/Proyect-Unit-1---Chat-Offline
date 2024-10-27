@@ -3,7 +3,7 @@ module com.github.JoseAngelGiron {
     requires javafx.fxml;
     requires java.xml.bind;
     requires java.sql;
-    requires java.desktop;
+    requires org.apache.poi.ooxml;
 
     opens com.github.JoseAngelGiron.model.entity to java.xml.bind;
     opens com.github.JoseAngelGiron to javafx.fxml;

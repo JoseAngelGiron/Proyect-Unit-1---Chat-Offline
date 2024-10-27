@@ -100,7 +100,7 @@ public class RequestController extends Controller implements Initializable {
 
         localDateTimeRequestTableColumn.setCellValueFactory(cellData -> {
             FriendshipRequest fr = cellData.getValue();
-            LocalDateTime name = fr.getTimestamp();
+            LocalDateTime name = fr.getDate();
 
             String formattedDate = name.format(formatter);
 

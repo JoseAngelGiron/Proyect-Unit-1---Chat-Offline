@@ -11,7 +11,9 @@ public enum Scenes {
     FRIENDSHIPREQUEST("view/sendFriendshipRequest"),
 
     REQUESTRECEIVED("view/requestsReceived"),
-    ACCEPTANDREJECT("view/acceptAndReject");
+    ACCEPTANDREJECT("view/acceptAndReject"),
+
+    CHAT("view/chat");
 
 
 

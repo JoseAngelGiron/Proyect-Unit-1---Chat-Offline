@@ -1,6 +1,7 @@
 package com.github.JoseAngelGiron.model.entity;
 
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +15,7 @@ public class FriendshipRequestList {
         this.requests = new ArrayList<>();
     }
 
+    @XmlElementWrapper(name = "requests")
     @XmlElement(name = "request")
     public List<FriendshipRequest> getRequests() {
         return requests;
@@ -30,7 +32,6 @@ public class FriendshipRequestList {
             requests.add(request);
             added = true;
         }
-
         return added;
 
     }
@@ -40,13 +41,5 @@ public class FriendshipRequestList {
     }
 
 
-    public FriendshipRequest findRequest(String sender, String receiver) {
-        for (FriendshipRequest request : requests) {
-            if (request.getSender().equals(sender) && request.getReceiver().equals(receiver)) {
-                return request;
-            }
-        }
-        return null;
-    }
 
 }

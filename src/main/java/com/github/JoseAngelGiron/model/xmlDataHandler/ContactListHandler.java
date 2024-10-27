@@ -20,7 +20,6 @@ public class ContactListHandler implements IContactListHandler<Contact, ContactL
             if(contact.getId() == idSender) {
                 contactToReturn = contact;
             }
-
         }
         return contactToReturn;
     }

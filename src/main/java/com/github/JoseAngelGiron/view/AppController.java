@@ -137,6 +137,8 @@ public class AppController extends Controller implements Initializable {
         changeScene(Scenes.START, mainWindow,null);
     }
 
+
+
     /**
      * Changes the scene to the personal area.
      * @throws IOException If an error occurs while loading the personal area view.
@@ -171,6 +173,11 @@ public class AppController extends Controller implements Initializable {
         //changeScene(Scenes.ADMIN, mainWindow, null);
     }
 
+    @FXML
+    public void changeToChat(User user) throws IOException {
+        changeScene(Scenes.CHAT, mainWindow,user);
+    }
+
 
     /**
      * Hides the administration button based on the user's role.
@@ -202,11 +209,6 @@ public class AppController extends Controller implements Initializable {
 
         Set<User> usersInContact = build().findListOfUsersByID(contactList);
 
-        System.out.println("Usuarios en contacto encontrados: ");
-        for (User user : usersInContact) {
-            System.out.println("Usuario: " + user.getUsername() + " | Foto: " + user.getPhoto());
-        }
-
         usersToShow = FXCollections.observableArrayList(usersInContact);
         contacts.setItems(usersToShow);
 
@@ -226,6 +228,19 @@ public class AppController extends Controller implements Initializable {
             imageView.setFitHeight(50);
 
             return new SimpleObjectProperty<>(imageView);
+        });
+
+        contacts.setOnMouseClicked(event -> {
+            if (event.getClickCount() == 2) {
+                User selectedUser = contacts.getSelectionModel().getSelectedItem();
+                if (selectedUser != null) {
+                    try {
+                        changeToChat(selectedUser);
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+            }
         });
     }
 

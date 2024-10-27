@@ -58,7 +58,7 @@ public class FriendshipRequestHandler implements IXMLHandler<FriendshipRequest, 
         for(FriendshipRequest friendshipRequest: listOfRequests.getRequests()){
             if(friendshipRequest.equals(entity)){
                 friendshipRequest.setStatus(entity.getStatus());
-                friendshipRequest.setTimestamp(entity.getTimestamp());
+                friendshipRequest.setDate(entity.getDate());
                 updated = true;
                 break;
 
