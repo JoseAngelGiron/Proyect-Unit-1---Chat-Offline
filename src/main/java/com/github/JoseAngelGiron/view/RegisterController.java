@@ -75,7 +75,8 @@ public class RegisterController extends Controller implements Initializable {
         userToRegister = new User(nickField.getText(), passwordField.getText(), emailField.getText(), "Hi, I'm using whatsapp !");
         UserHandler userHandler = new UserHandler();
 
-        if(userHandler.findByEmail(userToRegister).getId()==-1 && checkFields()){
+        if(userHandler.findByEmail(userToRegister).getId()==-1 && !userHandler.findByName(nickField.getText())
+                && checkFields()){
 
             userHandler.save(userToRegister);
             returnToLogin();
