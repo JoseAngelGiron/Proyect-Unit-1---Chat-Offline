@@ -5,7 +5,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -13,16 +12,16 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="575.0" prefWidth="713.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.JoseAngelGiron.view.AppController">
+<Pane fx:id="window" maxHeight="-Infinity" maxWidth="840.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="840.0" styleClass="medium-root" stylesheets="@assets/aplication.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.JoseAngelGiron.view.AppController">
    <children>
-      <ButtonBar layoutX="190.0" layoutY="-1.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="48.0" prefWidth="514.0" stylesheets="@IMG/aplication.css">
+      <ButtonBar layoutX="259.0" layoutY="-1.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="48.0" prefWidth="583.0" stylesheets="@IMG/aplication.css">
          <buttons>
-            <Button fx:id="administrationButton" contentDisplay="TOP" mnemonicParsing="false" onAction="#changeToAdminArea" styleClass="button2" stylesheets="@IMG/aplication.css" text="Admin" />
-            <Button minWidth="66.0" mnemonicParsing="false" onAction="#changeToProfile" prefHeight="26.0" styleClass="button2" stylesheets="@IMG/aplication.css" text="Perfil" />
-            <Button minWidth="55.0" mnemonicParsing="false" onAction="#changeToStart" prefHeight="26.0" styleClass="button2" stylesheets="@IMG/aplication.css" text="Inicio" />
+            <Button fx:id="logoutButton" contentDisplay="TOP" mnemonicParsing="false" onAction="#changeToLogin" styleClass="logout-button" stylesheets="@assets/aplication.css" text="Cerrar Sesión" />
+            <Button minWidth="66.0" mnemonicParsing="false" onAction="#changeToProfile" prefHeight="26.0" styleClass="gradient-button" stylesheets="@assets/aplication.css" text="Perfil" />
+            <Button minWidth="55.0" mnemonicParsing="false" onAction="#changeToStart" prefHeight="42.0" prefWidth="274.0" styleClass="custom-button" stylesheets="@assets/aplication.css" text="Inicio" />
          </buttons>
       </ButtonBar>
-      <VBox layoutY="-1.0" prefHeight="551.0" prefWidth="143.0">
+      <VBox layoutY="-1.0" prefHeight="551.0" prefWidth="233.0">
          <children>
             <GridPane prefHeight="137.0" prefWidth="143.0">
               <columnConstraints>
@@ -33,20 +32,20 @@
                 <RowConstraints maxHeight="266.8" minHeight="10.0" prefHeight="53.600018310546886" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <TextField prefHeight="22.0" prefWidth="114.0" promptText="Buscar" />
-                  <Button mnemonicParsing="false" onAction="#changeToRequests" prefHeight="40.0" prefWidth="142.0" text="Solicitudes de amistad" textAlignment="JUSTIFY" GridPane.rowIndex="1" />
+                  <Button mnemonicParsing="false" onAction="#changeToRequests" prefHeight="40.0" prefWidth="233.0" styleClass="friend-request-button" stylesheets="@assets/aplication.css" text="Solicitudes de amistad" textAlignment="JUSTIFY" GridPane.rowIndex="1" />
                </children>
             </GridPane>
-            <TableView fx:id="contacts" prefHeight="335.0" prefWidth="143.0">
+            <TableView fx:id="contacts" prefHeight="324.0" prefWidth="221.0" stylesheets="@assets/aplication.css">
               <columns>
-                  <TableColumn fx:id="photoUsers" prefWidth="61.60000532865524" text="Foto" />
-                <TableColumn fx:id="nameUsers" prefWidth="82.39999771118164" text="Contactos" />
+                  <TableColumn fx:id="photoUsers" prefWidth="96.79998934268951" text="Foto" />
+                <TableColumn fx:id="nameUsers" prefWidth="135.20003509521484" text="Contactos" />
               </columns>
             </TableView>
             <GridPane prefHeight="111.0" prefWidth="143.0">
               <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="99.19998168945312" minWidth="10.0" prefWidth="72.6000244140625" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="73.39998779296876" minWidth="10.0" prefWidth="70.19997558593751" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="123.59998779296875" minWidth="10.0" prefWidth="123.59998779296875" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="96.80001220703123" minWidth="10.0" prefWidth="88.6" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="73.39998779296876" minWidth="10.0" prefWidth="21.400000000000006" />
               </columnConstraints>
               <rowConstraints>
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -55,14 +54,13 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label fx:id="userName" prefHeight="18.0" prefWidth="64.0" text="User_NAME" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="60.0" text="Profile" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <Label fx:id="userStatus" prefHeight="18.0" prefWidth="53.0" text="Status" GridPane.rowIndex="3" />
-                  <ImageView fx:id="photoUser" fitHeight="70.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1" />
+                  <Label fx:id="userName" prefHeight="9.0" prefWidth="74.0" text="User_NAME" textFill="#0ee379" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Label fx:id="userStatus" prefHeight="18.0" prefWidth="112.0" text="Status" textFill="#30d40c" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <ImageView fx:id="photoUser" fitHeight="82.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1" />
                </children>
             </GridPane>
          </children>
       </VBox>
-      <Pane fx:id="mainWindow" layoutX="160.0" layoutY="52.0" prefHeight="505.0" prefWidth="552.0" />
+      <Pane fx:id="mainWindow" layoutX="242.0" layoutY="90.0" prefHeight="509.0" prefWidth="611.0" />
    </children>
 </Pane>

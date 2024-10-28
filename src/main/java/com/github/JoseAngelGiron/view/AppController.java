@@ -18,7 +18,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
+
 
 
 import javafx.scene.control.Label;
@@ -42,11 +42,13 @@ import java.util.Set;
 import static com.github.JoseAngelGiron.model.xmlDataHandler.UserHandler.build;
 
 
+
 public class AppController extends Controller implements Initializable {
+
+    @FXML
+    private Pane window;
     @FXML
     private Pane mainWindow;
-    @FXML
-    private Button administrationButton;
 
     @FXML
     private Label userName;
@@ -99,7 +101,7 @@ public class AppController extends Controller implements Initializable {
         contactListHandler = new ContactListHandler();
         contactListHandler.create(userLogged.getUsername(), userLogged.getId());
 
-        hideAdministrationButton();
+
         setUserData();
         setContacts();
         startTimedUpdate(this::updateProfilePicture, 5);
@@ -123,91 +125,6 @@ public class AppController extends Controller implements Initializable {
         Image profileImage = new Image(photo.toURI().toString());
         photoUser.setImage(profileImage);
     }
-
-    /**
-     * Opens a modal dialog window.
-     * @param scene The scene to be displayed in the modal window.
-     * @param title The title of the modal window.
-     * @param parent The parent controller of the modal window.
-     * @param data Additional data to be passed to the modal window.
-     * @throws IOException If an error occurs while loading the FXML for the modal window.
-     */
-    public static void openModal(Scenes scene, String title, Controller parent, Object data) throws IOException {
-        View view = loadFXML(scene);
-        Stage stage = new Stage();
-        stage.setTitle(title);
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.initOwner(App.stage);
-        Scene _scene = new Scene(view.scene);
-        stage.setScene(_scene);
-        view.controller.onOpen(parent, data);
-        stage.showAndWait();
-        modalController=view.controller;
-    }
-
-
-    /**
-     * Changes the scene to the store view.
-     * @throws IOException If an error occurs while loading the store view.
-     */
-    @FXML
-    public void changeToStart() throws IOException {
-        changeScene(Scenes.START, mainWindow,null);
-    }
-
-
-
-    /**
-     * Changes the scene to the personal area.
-     * @throws IOException If an error occurs while loading the personal area view.
-     */
-    @FXML
-    public void changeToProfile() throws IOException {
-        changeScene(Scenes.PROFILE, mainWindow,null);
-    }
-
-    /**
-     * Changes the scene to the request area.
-     * @throws IOException If an error occurs while loading the request view.
-     */
-    @FXML
-    public void changeToRequests() throws IOException {
-        FriendshipRequestHandler friendshipRequestHandler = new FriendshipRequestHandler();
-        friendshipRequestHandler.create();
-
-        List<FriendshipRequest> fr = friendshipRequestHandler.findByReceiver(userLogged.getUsername());
-        if(fr != null){
-            changeScene(Scenes.REQUESTRECEIVED, mainWindow, fr);
-        }
-
-    }
-
-    /**
-     * Changes the scene to the administration area.
-     * @throws IOException If an error occurs while loading the administration view.
-     */
-    @FXML
-    public void changeToAdminArea() throws IOException {
-        //changeScene(Scenes.ADMIN, mainWindow, null);
-    }
-
-    @FXML
-    public void changeToChat(User user) throws IOException {
-        changeScene(Scenes.CHAT, mainWindow,user);
-    }
-
-
-    /**
-     * Hides the administration button based on the user's role.
-     */
-    public void hideAdministrationButton() {
-
-         UserSession session = UserSession.UserSession();
-          if (!session.getUserLoggedIn().isAdmin()) {
-              administrationButton.setVisible(false);
-          }
-    }
-
 
     private void setUserData(){
         userLogged = UserSession.UserSession().getUserLoggedIn();
@@ -263,6 +180,79 @@ public class AppController extends Controller implements Initializable {
     }
 
     /**
+     * Opens a modal dialog window.
+     * @param scene The scene to be displayed in the modal window.
+     * @param title The title of the modal window.
+     * @param parent The parent controller of the modal window.
+     * @param data Additional data to be passed to the modal window.
+     * @throws IOException If an error occurs while loading the FXML for the modal window.
+     */
+    public static void openModal(Scenes scene, String title, Controller parent, Object data) throws IOException {
+        View view = loadFXML(scene);
+        Stage stage = new Stage();
+        stage.setTitle(title);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.initOwner(App.stage);
+        Scene _scene = new Scene(view.scene);
+        stage.setScene(_scene);
+        view.controller.onOpen(parent, data);
+        stage.showAndWait();
+        modalController=view.controller;
+    }
+
+
+    /**
+     * Changes the scene to the store view.
+     * @throws IOException If an error occurs while loading the store view.
+     */
+    @FXML
+    public void changeToStart() throws IOException {
+        changeScene(Scenes.START, mainWindow,null);
+    }
+
+
+    /**
+     * Changes the scene to the personal area.
+     * @throws IOException If an error occurs while loading the personal area view.
+     */
+    @FXML
+    public void changeToProfile() throws IOException {
+        changeScene(Scenes.PROFILE, mainWindow,null);
+    }
+
+    /**
+     * Changes the scene to the request area.
+     * @throws IOException If an error occurs while loading the request view.
+     */
+    @FXML
+    public void changeToRequests() throws IOException {
+        FriendshipRequestHandler friendshipRequestHandler = new FriendshipRequestHandler();
+        friendshipRequestHandler.create();
+
+        List<FriendshipRequest> fr = friendshipRequestHandler.findByReceiver(userLogged.getUsername());
+        if(fr != null){
+            changeScene(Scenes.REQUESTRECEIVED, mainWindow, fr);
+        }
+
+    }
+
+    /**
+     * Changes the scene to the login.
+     * @throws IOException If an error occurs while loading the login view.
+     */
+    @FXML
+    public void changeToLogin() throws IOException {
+
+        resizeWindow();
+        changeScene(Scenes.LOGIN, window, null);
+    }
+
+    @FXML
+    public void changeToChat(User user) throws IOException {
+        changeScene(Scenes.CHAT, mainWindow,user);
+    }
+
+    /**
      * Changes the displayed scene in a Pane container with a new scene by loading an FXML file
      * and associating it with its controller.
      *
@@ -291,6 +281,14 @@ public class AppController extends Controller implements Initializable {
         view.scene=p;
         view.controller=c;
         return view;
+    }
+
+
+    private void resizeWindow(){
+        Stage stage = (Stage) window.getScene().getWindow();
+        stage.setWidth(640);
+        stage.setHeight(540);
+        stage.centerOnScreen();
     }
 
     @FXML

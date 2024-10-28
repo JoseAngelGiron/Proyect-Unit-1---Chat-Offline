@@ -27,11 +27,11 @@ public class AcceptAndRejectController extends Controller implements Initializab
 
     @FXML
     private Button rejectButton;
-
     @FXML
     private Label questionLabel;
 
-    private FriendshipRequest friendshipRequest;    private ContactListHandler contactListHandler;
+    private FriendshipRequest friendshipRequest;
+    private ContactListHandler contactListHandler;
 
 
     @Override

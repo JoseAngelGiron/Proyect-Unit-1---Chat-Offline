@@ -19,6 +19,10 @@ public class UserSession {
 
     }
 
+    public void closeSession(){
+        userLoggedIn = null;
+    }
+
     public void setUserIntoSession(User user){
         this.userLoggedIn = user;
     }

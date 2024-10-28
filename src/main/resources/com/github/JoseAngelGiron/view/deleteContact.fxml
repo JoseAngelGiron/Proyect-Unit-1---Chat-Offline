@@ -7,10 +7,10 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane prefHeight="351.0" prefWidth="663.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.JoseAngelGiron.view.DeleteContact">
+<AnchorPane prefHeight="351.0" prefWidth="663.0" styleClass="modal-window" stylesheets="@assets/aplication.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.JoseAngelGiron.view.DeleteContact">
    <children>
       <GridPane layoutX="3.0" layoutY="1.0" prefHeight="349.0" prefWidth="606.0">
         <columnConstraints>
@@ -30,19 +30,19 @@
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="192.0" minWidth="10.0" prefWidth="192.0" />
               </columnConstraints>
               <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="24.800009155273436" minHeight="10.0" prefHeight="21.599996948242186" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="39.20000305175781" minHeight="10.0" prefHeight="39.20000305175781" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button mnemonicParsing="false" onAction="#deleteContact" text="Borrar" GridPane.rowIndex="1" />
-                  <Button fx:id="closeButton" mnemonicParsing="false" onAction="#close" text="Cancelar" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Button mnemonicParsing="false" onAction="#deleteContact" styleClass="logout-button" stylesheets="@assets/aplication.css" text="Borrar" textFill="#df0c0c" GridPane.rowIndex="1" />
+                  <Button fx:id="closeButton" mnemonicParsing="false" onAction="#close" prefHeight="42.0" prefWidth="105.0" styleClass="login-button" text="Cancelar" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                </children>
             </GridPane>
-            <GridPane prefHeight="146.0" prefWidth="287.0" GridPane.columnIndex="1">
+            <GridPane prefHeight="146.0" prefWidth="287.0" stylesheets="@assets/aplication.css" GridPane.columnIndex="1">
               <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="295.1999969482422" minWidth="10.0" prefWidth="295.1999969482422" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="145.60003662109375" minWidth="8.800003051757812" prefWidth="8.800003051757812" />
               </columnConstraints>
               <rowConstraints>
                   <RowConstraints maxHeight="46.000006103515624" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -51,9 +51,15 @@
                 <RowConstraints maxHeight="101.19998397827149" minHeight="10.0" prefHeight="24.19999999999999" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="¿Deseas borrar a este usuario de tu lista de contactos?" wrappingWidth="286.892578125" GridPane.rowIndex="1" />
-                  <Label fx:id="name" text="Nombre" GridPane.rowIndex="2" />
-                  <Label fx:id="status" text="Estado" GridPane.rowIndex="3" />
+                  <Text fill="#e71e08" strokeType="OUTSIDE" strokeWidth="0.0" text="¿Deseas borrar a este usuario de tu lista de contactos?" wrappingWidth="286.892578125" GridPane.rowIndex="1">
+                     <font>
+                        <Font name="Arial Black" size="16.0" />
+                     </font></Text>
+                  <Label fx:id="name" text="Nombre" textFill="#440ad7" GridPane.rowIndex="2">
+                     <font>
+                        <Font name="Baskerville Old Face" size="13.0" />
+                     </font></Label>
+                  <Label fx:id="status" text="Estado" textFill="#ef0bd4" GridPane.rowIndex="3" />
                </children>
             </GridPane>
          </children>

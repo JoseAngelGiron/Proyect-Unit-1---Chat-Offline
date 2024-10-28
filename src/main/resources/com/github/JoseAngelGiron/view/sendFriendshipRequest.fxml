@@ -8,9 +8,10 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox alignment="CENTER" maxWidth="800.0" minHeight="190.0" prefHeight="224.0" prefWidth="578.0" spacing="20.0" styleClass="little-root" stylesheets="@IMG/aplication.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.JoseAngelGiron.view.SendFriendshipRequestController">
+<VBox alignment="CENTER" maxWidth="800.0" minHeight="190.0" prefHeight="224.0" prefWidth="578.0" spacing="20.0" styleClass="modal-window" stylesheets="@assets/aplication.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.JoseAngelGiron.view.SendFriendshipRequestController">
    <children>
       <GridPane>
         <columnConstraints>
@@ -21,7 +22,10 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Text fill="#1e1616" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-field" text="¿Desea envíar una petición de amistad a este usuario?" wrappingWidth="424.40820932388306" />
+            <Text fill="#2205e8" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-field" text="¿Desea envíar una petición de amistad a este usuario?" wrappingWidth="424.40820932388306">
+               <font>
+                  <Font name="Arial Black" size="23.0" />
+               </font></Text>
          </children>
       </GridPane>
       <Separator prefWidth="200.0" />
@@ -46,8 +50,8 @@
           <RowConstraints maxHeight="42.40001831054687" minHeight="5.200016403198241" prefHeight="42.40001831054687" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button fx:id="closeButton" mnemonicParsing="false" onAction="#closeWindow" prefHeight="26.0" prefWidth="125.0" text="Cancelar" />
-            <Button fx:id="sendButton" mnemonicParsing="false" onAction="#sendRequest" prefHeight="26.0" prefWidth="110.0" text="Envíar" GridPane.columnIndex="1" />
+            <Button fx:id="closeButton" mnemonicParsing="false" onAction="#closeWindow" prefHeight="26.0" prefWidth="125.0" styleClass="logout-button" stylesheets="@assets/aplication.css" text="Cancelar" />
+            <Button fx:id="sendButton" mnemonicParsing="false" onAction="#sendRequest" prefHeight="26.0" prefWidth="110.0" styleClass="custom-button" stylesheets="@assets/aplication.css" text="Envíar" GridPane.columnIndex="1" />
          </children>
       </GridPane>
    </children>

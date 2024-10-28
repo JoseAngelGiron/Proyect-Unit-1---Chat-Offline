@@ -16,7 +16,7 @@ public enum Scenes {
     CHAT("view/chat"),
 
     PROFILE("view/profile"),
-    CHANGEPHOTO("view/changePhoto"),
+    CHANGESETTINGS("view/changeSettings"),
     DELETECONTACT("view/deleteContact");
 
     private String url;

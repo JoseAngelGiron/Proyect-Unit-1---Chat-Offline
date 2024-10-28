@@ -26,10 +26,7 @@ public class RegisterController extends Controller implements Initializable {
 
     @FXML
     private Label nickLabel1;
-    @FXML
-    private Label nickLabel2;
-    @FXML
-    private Label nickLabel3;
+
 
     @FXML
     private Label passwordLabel1;
@@ -92,9 +89,12 @@ public class RegisterController extends Controller implements Initializable {
      */
     @FXML
     private void returnToLogin() throws IOException {
+
         App.setRoot(Scenes.LOGIN.getURL());
-        App.scene.getWindow().setWidth(480);
-        App.scene.getWindow().setHeight(320);
+
+        App.scene.getWindow().setWidth(720);
+        App.scene.getWindow().setHeight(480);
+        App.scene.getWindow().centerOnScreen();
     }
 
 
@@ -113,12 +113,10 @@ public class RegisterController extends Controller implements Initializable {
 
             if(!validateNick(nickField.getText())){
                 nickLabel1.setVisible(true);
-                nickLabel2.setVisible(true);
-                nickLabel3.setVisible(true);
+
             }else{
                 nickLabel1.setVisible(false);
-                nickLabel2.setVisible(false);
-                nickLabel3.setVisible(false);
+
             }
 
             if (!validatePassword(passwordField.getText())){

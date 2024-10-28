@@ -2,7 +2,6 @@ package com.github.JoseAngelGiron.model.entity;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 import java.util.Objects;
 
@@ -20,8 +19,7 @@ public class User {
     private String status;
     private boolean admin;
     private String photo;
-    private ContactList contactList;
-    private FriendshipRequestList friendshipRequestList;
+
 
     public User() {
         id= -1;
@@ -102,14 +100,6 @@ public class User {
         this.photo = photo;
     }
 
-    @XmlTransient
-    public ContactList getContactList() {
-        return contactList;
-    }
-
-    public void setContactList(ContactList contactList) {
-        this.contactList = contactList;
-    }
 
     @Override
     public boolean equals(Object o) {

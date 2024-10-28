@@ -19,7 +19,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.util.Duration;
+
 
 import java.io.File;
 import java.io.IOException;
@@ -101,7 +101,7 @@ public class ProfileController extends Controller implements Initializable {
 
     @FXML
     public void changeProfilePhoto() throws IOException {
-        openModal(Scenes.CHANGEPHOTO, "Seleccione la foto que desea usar", this, null);
+        openModal(Scenes.CHANGESETTINGS, "Seleccione la foto que desea usar", this, null);
 
     }
 

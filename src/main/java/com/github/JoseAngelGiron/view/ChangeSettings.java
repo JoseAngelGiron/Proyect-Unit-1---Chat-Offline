@@ -11,6 +11,7 @@ import javafx.fxml.Initializable;
 
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -22,13 +23,18 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
-public class ChangePhotoController extends Controller implements Initializable {
+public class ChangeSettings extends Controller implements Initializable {
     @FXML
     private TableView<ImageView> tableOfImages;
     @FXML
     private TableColumn<ImageView, ImageView> imagesColumn;
     @FXML
     private ImageView bigImage;
+
+    @FXML
+    private TextField currentStatus;
+
+    private User currentUser;
 
     private final static String imagesPath = "C:\\Users\\the_l\\IdeaProjects\\Project-1DA\\src\\main\\resources\\com\\github\\JoseAngelGiron\\view\\assets";
 
@@ -44,17 +50,23 @@ public class ChangePhotoController extends Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        currentUser = UserSession.UserSession().getUserLoggedIn();
         setImages();
         setDefaultImage();
 
     }
     @FXML
-    public void changePhoto() {
+    public void changeSetting() {
         String url = bigImage.getImage().getUrl();
         String photoUrl = url.replace("file:/", "");
         User user = UserSession.UserSession().getUserLoggedIn();
         UserSession.UserSession().getUserLoggedIn().setPhoto(photoUrl);
         user.setPhoto(photoUrl);
+
+        if(!currentStatus.getText().isEmpty()){
+            user.setStatus(currentStatus.getText());
+        }
+
         UserHandler.build().update(user);
     }
 
@@ -67,8 +79,8 @@ public class ChangePhotoController extends Controller implements Initializable {
                 imageFiles.stream()
                         .map(file -> {
                             ImageView imageView = new ImageView(new Image(file.toURI().toString()));
-                            imageView.setFitWidth(100); // Ajusta el tamaño del ImageView
-                            imageView.setFitHeight(100); // Ajusta el tamaño del ImageView
+                            imageView.setFitWidth(100);
+                            imageView.setFitHeight(100);
                             imageView.setPreserveRatio(true);
                             return imageView;
                         })
@@ -96,8 +108,8 @@ public class ChangePhotoController extends Controller implements Initializable {
     }
 
     private void setDefaultImage(){
-        User user = UserSession.UserSession().getUserLoggedIn();
-        String actualPhoto = user.getPhoto();
+        currentUser = UserSession.UserSession().getUserLoggedIn();
+        String actualPhoto = currentUser.getPhoto();
         Image image = new Image(new File(actualPhoto).toURI().toString());
         bigImage.setImage(image);
     }
