@@ -83,9 +83,16 @@ public class LoginController extends Controller implements Initializable {
 
     }
 
+    /**
+     * Changes the current scene to the mainWindow scene.
+     * @throws IOException If an I/O error occurs while setting the root scene.
+     */
     @FXML
     private void changeToMainWindow() throws IOException {
 
+        App.scene.getWindow().setWidth(1100);
+        App.scene.getWindow().setHeight(720);
+        App.scene.getWindow().centerOnScreen();
         App.setRoot(Scenes.ROOT.getURL());
 
     }

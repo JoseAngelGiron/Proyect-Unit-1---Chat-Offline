@@ -19,6 +19,13 @@ public class UserSession {
 
     }
 
+    /**
+     * Closes the current user session.
+     * This method sets the logged-in user to null, effectively ending the user's session.
+     * After this method is called, the user will be logged out, and any session-related data
+     * associated with the user will no longer be accessible.
+     * @return void
+     */
     public void closeSession(){
         userLoggedIn = null;
     }

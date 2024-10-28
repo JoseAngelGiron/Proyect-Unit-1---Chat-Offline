@@ -11,6 +11,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <Pane fx:id="window" maxHeight="-Infinity" maxWidth="840.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="840.0" styleClass="medium-root" stylesheets="@assets/aplication.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.JoseAngelGiron.view.AppController">
    <children>
@@ -54,8 +55,11 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label fx:id="userName" prefHeight="9.0" prefWidth="74.0" text="User_NAME" textFill="#0ee379" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <Label fx:id="userStatus" prefHeight="18.0" prefWidth="112.0" text="Status" textFill="#30d40c" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <Label fx:id="userName" prefHeight="9.0" prefWidth="74.0" text="User_NAME" textFill="#f3f7f5" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Label>
+                  <Label fx:id="userStatus" prefHeight="18.0" prefWidth="112.0" text="Status" textFill="#eff2ee" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                   <ImageView fx:id="photoUser" fitHeight="82.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1" />
                </children>
             </GridPane>

@@ -86,11 +86,16 @@ public class AppController extends Controller implements Initializable {
 
     }
 
-    /** //recomentar
-     * Initializes the controller after its root element has been completely processed.
+    /**
+     * Initializes the controller, setting up user session data, contact lists, and periodic updates.
      *
-     * @param location  The location used to resolve relative paths for the root object.
-     * @param resources The resources used to localize the root object.
+     * This method is called automatically by the JavaFX framework when the view is loaded. It initializes
+     * the user's session and contact list, sets the user's profile data, and schedules updates for the
+     * profile picture and contact list. It also switches the view to the start page, handling any
+     * exceptions that occur during this process.
+     *
+     * @param location  The location used to resolve relative paths for the root object, or null if not known.
+     * @param resources The resources used to localize the root object, or null if not needed.
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -113,19 +118,46 @@ public class AppController extends Controller implements Initializable {
         }
     }
 
-
+    /**
+     * Starts a timed update that repeatedly executes a specified function at a defined interval.
+     *
+     * This static method uses a JavaFX `Timeline` to schedule and run a function at regular
+     * intervals, allowing for periodic tasks such as refreshing data or updating the UI.
+     * The timeline runs indefinitely with a cycle count set to `Timeline.INDEFINITE`.
+     *
+     * @param functionToExecute The function to be executed periodically.
+     * @param intervalSeconds   The interval in seconds at which the function will execute.
+     */
     public static void startTimedUpdate(Runnable functionToExecute, int intervalSeconds) {
         Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(intervalSeconds), event -> functionToExecute.run()));
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
     }
 
+    /**
+     * Updates the user's profile picture in the UI.
+     *
+     * This method retrieves the user's profile picture from the file system using the
+     * path stored in the `userLogged` object. It creates an `Image` object from the file
+     * and sets it to the `photoUser` UI component. This allows the profile picture to
+     * be refreshed and displayed whenever this method is called.
+     */
     private void updateProfilePicture() {
         File photo = new File(userLogged.getPhoto());
         Image profileImage = new Image(photo.toURI().toString());
         photoUser.setImage(profileImage);
     }
 
+    /**
+     * Sets the logged-in user's data in the UI.
+     *
+     * This method retrieves the currently logged-in user from the `UserSession` and
+     * updates the UI components with the user's information. It sets the username and
+     * status text fields, and loads the user's profile picture from the specified file path.
+     *
+     * The profile picture is converted to an `Image` object and displayed in the UI
+     * component designated for the user's photo.
+     */
     private void setUserData(){
         userLogged = UserSession.UserSession().getUserLoggedIn();
 
@@ -137,7 +169,18 @@ public class AppController extends Controller implements Initializable {
         photoUser.setImage(profileImage);
     }
 
-
+    /**
+     * Initializes and populates the contact list in the UI.
+     *
+     * This method retrieves the user's contacts using the `ContactListHandler`
+     * and populates the UI components with the relevant data. It constructs a
+     * set of users from the contact list and sets this data to the `contacts`
+     * UI component. The method defines how the user names and profile pictures
+     * are displayed in the contact list.
+     *
+     * Additionally, it sets up a mouse click event handler to initiate a chat
+     * with the selected contact when the user double-clicks on a contact in the list.
+     */
     private void setContacts(){
 
         ContactList contactList = contactListHandler.findAll(userLogged.getUsername());
@@ -247,6 +290,10 @@ public class AppController extends Controller implements Initializable {
         changeScene(Scenes.LOGIN, window, null);
     }
 
+    /**
+     * Changes the scene to the chat.
+     * @throws IOException If an error occurs while loading the chat view.
+     */
     @FXML
     public void changeToChat(User user) throws IOException {
         changeScene(Scenes.CHAT, mainWindow,user);
@@ -283,7 +330,16 @@ public class AppController extends Controller implements Initializable {
         return view;
     }
 
-
+    /**
+     * Resizes and centers the application window on the screen.
+     *
+     * This method adjusts the dimensions of the current stage to a specified width
+     * and height, setting the width to 640 pixels and the height to 540 pixels.
+     * After resizing, it centers the window on the screen for better visibility.
+     *
+     * It uses the JavaFX `Stage` class to access the current window and apply
+     * the new size and positioning.
+     */
     private void resizeWindow(){
         Stage stage = (Stage) window.getScene().getWindow();
         stage.setWidth(640);

@@ -18,6 +18,12 @@ public class MessageListCell extends ListCell<Message> {
         hBox.getChildren().addAll(userNameText, messageText);
     }
 
+    /**
+     * Updates the cell with the given message.
+     *
+     * @param message The Message object to display.
+     * @param empty Indicates if the cell is empty.
+     */
     @Override
     protected void updateItem(Message message, boolean empty) {
         super.updateItem(message, empty);
@@ -25,13 +31,13 @@ public class MessageListCell extends ListCell<Message> {
         if (empty || message == null) {
             setGraphic(null);
         } else {
-            // Comprobar si el mensaje es del usuario actual o del otro usuario
+
             if (message.getSender().equals(currentUser)) {
-                // Mensaje del usuario actual: alinear a la derecha
-                userNameText.setText(""); // No mostrar nombre
+
+                userNameText.setText("");
                 hBox.setAlignment(Pos.CENTER_RIGHT);
             } else {
-                // Mensaje del otro usuario: alinear a la izquierda y mostrar nombre
+
                 userNameText.setText(message.getSender() + ": ");
                 hBox.setAlignment(Pos.CENTER_LEFT);
             }
