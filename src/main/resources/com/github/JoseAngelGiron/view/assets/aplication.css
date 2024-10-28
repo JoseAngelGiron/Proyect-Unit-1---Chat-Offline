@@ -1,227 +1,350 @@
-.button{
-    -fx-background-color: #171a21;
-    -fx-text-fill: #ffffff;
-    -fx-font-size: 14px;
-    -fx-font-weight: bold;
-    -fx-pref-width: 120px;
-    -fx-pref-height: 40px;
-    -fx-background-radius: 5px;
-    -fx-border-color: #5d5d5d;
-    -fx-border-width: 1px;
-}
-
-
-.usernameField, .passwordField {
-    -fx-background-color: #202225;
-    -fx-text-fill: #ffffff;
-    -fx-font-size: 14px;
-    -fx-pref-width: 200px;
-    -fx-pref-height: 30px;
-    -fx-background-radius: 5px;
-    -fx-border-color: #5d5d5d;
-    -fx-border-width: 1px;
-}
-
-.usernameField:focus, .passwordField:focus {
-    -fx-border-color: #66c0f4;
-}
-
-.text-field {
-    -fx-background-color: #171a21;
-    -fx-text-fill: #ffffff;
-    -fx-font-size: 14px;
-    -fx-pref-width: 200px;
-    -fx-pref-height: 30px;
-    -fx-background-radius: 5px;
-    -fx-border-color: #5d5d5d;
-    -fx-border-width: 1px;
-}
-
-.text-field:focused {
-    -fx-border-color: #66c0f4;
-}
-.text-field2 {
-    -fx-background-color: #ffffff; /* Fondo blanco */
-    -fx-text-fill: #000000;       /* Texto negro */
-}
-
-.button2 {
-    -fx-background-color: #2a475e;     /* Color de fondo azul oscuro */
-    -fx-text-fill: #ffffff;            /* Color del texto blanco */
-    -fx-font-size: 14px;               /* Tamaño de la fuente */
-    -fx-font-weight: bold;             /* Texto en negrita */
-    -fx-pref-width: 150px;             /* Ancho preferido del botón */
-    -fx-pref-height: 40px;             /* Altura preferida del botón */
-    -fx-background-radius: 5px;        /* Bordes redondeados */
-    -fx-border-color: #1b2838;         /* Color del borde */
-    -fx-border-width: 2px;             /* Ancho del borde */
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.75), 5, 0.5, 0, 0); /* Sombra */
-    -fx-cursor: hand;                  /* Cambiar el cursor al pasar sobre el botón */
-    -fx-padding: 10 20 10 20;          /* Relleno interno */
-}
-
-.button2:hover {
-    -fx-background-color: #3a637e;     /* Color de fondo al pasar el cursor */
-}
-
-.button2:pressed {
-    -fx-background-color: #1b2838;     /* Color de fondo al presionar */
-}
-
-.container {
-    -fx-background-color: linear-gradient(to bottom, #1b2838, #171a21);
-    -fx-padding: 20px;
-}
-
+/* Estilo del fondo principal oscuro */
 .root {
-    -fx-background-color: linear-gradient(to bottom, #1b2838, #171a21);
-    -fx-min-width: 1000px; /* Ancho mínimo del contenedor raíz */
-    -fx-min-height: 900px; /* Altura mínima del contenedor raíz */
+    -fx-background-color: #36393F;
+    -fx-font-family: 'Segoe UI', sans-serif;
+    -fx-text-fill: #FFFFFF;
+}
+
+.root2 {
+    -fx-border-color: #7289DA; /* Color de borde */
+    -fx-border-width: 2px; /* Ancho del borde */
+    -fx-border-radius: 10px; /* Bordes redondeados */
+    -fx-background-radius: 10px; /* Fondo redondeado */
+}
+
+/* Contenedor del formulario de inicio de sesión */
+.login-container {
+    -fx-background-color: #2F3136;
+    -fx-padding: 20px;
+    -fx-border-radius: 8px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 10, 0, 0, 4);
+    -fx-min-width: 600px;   /* Ancho mínimo */
+    -fx-min-height: 440px;  /* Altura mínima */
+    -fx-pref-width: 700px;  /* Ancho preferido (opcional) */
+    -fx-pref-height: 500px; /* Altura preferida (opcional) */
+    -fx-max-width: 800px;   /* Ancho máximo */
+    -fx-max-height: 800px;  /* Altura máxima */
+    -fx-alignment: center;
 }
 .medium-root {
     -fx-background-color: linear-gradient(to bottom, #1b2838, #171a21);     /* Color de fondo gris claro */
     -fx-min-width: 800px;               /* Ancho mínimo de la ventana modal */
     -fx-min-height: 600px;              /* Altura mínima de la ventana modal */
-    -fx-max-width: 600px;               /* Ancho máximo de la ventana modal */
-    -fx-max-height: 600px;              /* Altura máxima de la ventana modal */
+
     -fx-padding: 20px;                  /* Relleno interno */
     -fx-border-color: #1b2838;          /* Color del borde */
     -fx-border-width: 2px;              /* Ancho del borde */
     -fx-background-radius: 10px;        /* Bordes redondeados */
 }
 
-.little-root {
+.modal-window {
     -fx-background-color: linear-gradient(to bottom, #1b2838, #171a21);     /* Color de fondo gris claro */
     -fx-min-width: 300px;               /* Ancho mínimo de la ventana modal */
-    -fx-min-height: 300px;              /* Altura mínima de la ventana modal */
-    -fx-max-width: 600px;               /* Ancho máximo de la ventana modal */
-    -fx-max-height: 300px;              /* Altura máxima de la ventana modal */
+    -fx-min-height: 400px;              /* Altura mínima de la ventana modal */
+
     -fx-padding: 20px;                  /* Relleno interno */
     -fx-border-color: #1b2838;          /* Color del borde */
     -fx-border-width: 2px;              /* Ancho del borde */
     -fx-background-radius: 10px;        /* Bordes redondeados */
 }
 
-.search-bar {
-    -fx-background-color: #66c0f4;       /* Color de fondo azul claro */
-    -fx-padding: 10px;                    /* Relleno interno */
-    -fx-border-width: 0;                  /* Sin borde */
-    -fx-background-image: url('search_icon.png'); /* Icono de búsqueda */
-    -fx-background-repeat: no-repeat;     /* No repetir el icono */
-    -fx-background-position: left center; /* Posición del icono */
-    -fx-font-size: 14px;                  /* Tamaño de la fuente */
-    -fx-text-fill: #000000;               /* Color del texto */
-    -fx-prompt-text-fill: #808080;        /* Color del texto de la sugerencia */
-    -fx-pref-height: 40px;                /* Altura preferida */
+.start-window {
+    -fx-background-color: linear-gradient(to bottom, #1b2838, #171a21);     /* Color de fondo gris claro */
+    -fx-min-width: 300px;               /* Ancho mínimo de la ventana modal */
+    -fx-min-height: 150px;              /* Altura mínima de la ventana modal */
+
+    -fx-padding: 20px;                  /* Relleno interno */
+    -fx-border-color: #1b2838;          /* Color del borde */
+    -fx-border-width: 2px;              /* Ancho del borde */
+    -fx-background-radius: 10px;        /* Bordes redondeados */
 }
 
-.search-bar:hover {
-    -fx-background-color: #8ec8e7;       /* Color de fondo al pasar el cursor */
+.register-container {
+    -fx-background-color: #2F3136;
+    -fx-padding: 20px;
+    -fx-border-radius: 8px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 10, 0, 0, 4);
+    -fx-pref-width: 400px;  /* Ancho preferido (opcional) */
+    -fx-pref-height: 1200px;
+
+    -fx-alignment: center;
 }
 
-.search-bar:focused {
-    -fx-background-color: #a6d5f3;      /* Color de fondo al estar enfocado */
+/* Título del formulario */
+.title {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #FFFFFF;
+    -fx-padding: 0 0 20px 0;
+    -fx-alignment: center;
 }
 
-.steam-button {
-    -fx-background-color: #66c0f4;     /* Color de fondo azul claro */
-    -fx-text-fill: #ffffff;            /* Color del texto blanco */
-    -fx-font-size: 14px;               /* Tamaño de la fuente */
-    -fx-font-weight: bold;             /* Texto en negrita */
-    -fx-pref-width: 150px;             /* Ancho preferido del botón */
-    -fx-pref-height: 40px;             /* Altura preferida del botón */
-    -fx-background-radius: 5px;        /* Bordes redondeados */
-    -fx-border-color: #1b2838;         /* Color del borde */
-    -fx-border-width: 2px;             /* Ancho del borde */
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.75), 5, 0.5, 0, 0); /* Sombra */
-    -fx-cursor: hand;                  /* Cambiar el cursor al pasar sobre el botón */
-    -fx-padding: 10 20 10 20;          /* Relleno interno */
+/* Campos de texto */
+.text-field {
+    -fx-background-color: #202225;
+    -fx-background-radius: 6px;
+    -fx-border-color: #72767D;
+    -fx-border-radius: 6px;
+    -fx-text-fill: #FFFFFF;
+    -fx-prompt-text-fill: #72767D;
+    -fx-padding: 10px;
 }
 
-.steam-button:hover {
-    -fx-background-color: #8ec8e7;     /* Color de fondo al pasar el cursor */
+/* Botón de inicio de sesión */
+.login-button {
+    -fx-background-color: #5865F2;
+    -fx-background-radius: 6px;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-padding: 10px 20px;
+    -fx-border-radius: 6px;
+    -fx-alignment: center;
 }
 
-.steam-button:pressed {
-    -fx-background-color: #1b2838;     /* Color de fondo al presionar */
+.login-button:hover {
+    -fx-background-color: #4752C4;
 }
 
-.steam-text-field {
-    -fx-background-color: #66c0f4;    /* Color de fondo azul claro */
-    -fx-text-fill: #000000;           /* Color del texto negro */
-    -fx-font-size: 14px;              /* Tamaño de la fuente */
-    -fx-pref-width: 300px;            /* Ancho preferido del campo de texto */
-    -fx-pref-height: 40px;            /* Altura preferida del campo de texto */
-    -fx-background-radius: 5px;       /* Bordes redondeados */
-    -fx-border-color: #1b2838;        /* Color del borde */
-    -fx-border-width: 2px;            /* Ancho del borde */
-    -fx-padding: 10px;                /* Relleno interno */
+.login-button:pressed {
+    -fx-background-color: #3C45A5;
 }
 
-.steam-text-field:focused {
-    -fx-border-color: #66c0f4;        /* Color del borde al estar enfocado */
+/* Estilo para el botón */
+.custom-button {
+    -fx-background-color: #4CAF50; /* Color de fondo normal */
+    -fx-text-fill: white;           /* Color del texto */
+    -fx-font-size: 16px;            /* Tamaño de fuente */
+    -fx-padding: 10px 20px;         /* Espaciado interno */
+    -fx-background-radius: 5px;     /* Bordes redondeados */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 4, 0, 0, 3); /* Sombra */
+    -fx-border-color: transparent;   /* Sin borde */
 }
 
-.steam-text-field:hover {
-    -fx-background-color: #8ec8e7;    /* Color de fondo al pasar el cursor */
+/* Cambios al pasar el mouse (hover) */
+.custom-button:hover {
+    -fx-background-color: #45a049; /* Color de fondo al pasar el mouse */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 8, 0, 0, 4); /* Sombra más pronunciada */
+}
+
+/* Cambios al hacer clic (pressed) */
+.custom-button:pressed {
+    -fx-background-color: #388E3C; /* Color de fondo al hacer clic */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 4, 0, 0, 2); /* Sombra más ligera */
+}
+
+.register-link {
+    -fx-font-size: 14px;
+    -fx-text-fill: #FFFFFF; /* Texto en blanco */
+    -fx-background-color: #57F287; /* Fondo verde */
+    -fx-padding: 10px 20px; /* Espaciado interno */
+    -fx-background-radius: 5px; /* Bordes redondeados */
+    -fx-cursor: hand;
+}
+
+/* Estilo para el botón con degradado */
+.gradient-button {
+    -fx-background-color: linear-gradient(to right, #6A82FB, #FC5C7D); /* Degradado de colores */
+    -fx-text-fill: white;                /* Color del texto */
+    -fx-font-size: 16px;                 /* Tamaño de fuente */
+    -fx-padding: 10px 20px;              /* Espaciado interno */
+    -fx-border-radius: 8px;              /* Bordes redondeados */
+    -fx-border-color: transparent;        /* Sin borde */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 6, 0, 0, 2); /* Sombra */
+}
+
+/* Cambios al pasar el mouse (hover) */
+.gradient-button:hover {
+    -fx-background-color: linear-gradient(to right, #5A72E6, #EA4A67); /* Degradado diferente en hover */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 8, 0, 0, 4); /* Sombra más pronunciada */
+}
+
+/* Cambios al hacer clic (pressed) */
+.gradient-button:pressed {
+    -fx-background-color: linear-gradient(to right, #5056E3, #D43C58); /* Degradado más oscuro al hacer clic */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 4, 0, 0, 2); /* Sombra más ligera */
 }
 
 
-/* ----- */
+/* Estilo para el botón de cerrar sesión */
+.logout-button {
+    -fx-background-color: #FF4C4C; /* Color de fondo rojo */
+    -fx-text-fill: white;            /* Color del texto */
+    -fx-font-size: 16px;             /* Tamaño de fuente */
+    -fx-padding: 10px 20px;          /* Espaciado interno */
+    -fx-border-radius: 8px;          /* Bordes redondeados */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 4, 0, 0, 3); /* Sombra */
+    -fx-cursor: hand;                 /* Cambia el cursor al pasar sobre el botón */
+}
 
+/* Cambios al pasar el mouse (hover) */
+.logout-button:hover {
+    -fx-background-color: #FF3B3B; /* Color de fondo más oscuro al pasar el mouse */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 6, 0, 0, 4); /* Sombra más pronunciada */
+}
+
+/* Cambios al hacer clic (pressed) */
+.logout-button:pressed {
+    -fx-background-color: #FF2D2D; /* Color de fondo aún más oscuro al hacer clic */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 4, 0, 0, 2); /* Sombra más ligera */
+}
+
+
+/* Estilo para el botón de solicitudes de amistad */
+.friend-request-button {
+    -fx-background-color: #007BFF; /* Color de fondo azul */
+    -fx-text-fill: white;            /* Color del texto */
+    -fx-font-size: 16px;             /* Tamaño de fuente */
+    -fx-padding: 10px 20px;          /* Espaciado interno */
+    -fx-border-radius: 5px;          /* Bordes redondeados */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 4, 0, 0, 2); /* Sombra */
+    -fx-cursor: hand;                 /* Cambia el cursor al pasar sobre el botón */
+}
+
+/* Cambios al pasar el mouse (hover) */
+.friend-request-button:hover {
+    -fx-background-color: #0056b3; /* Color de fondo más oscuro al pasar el mouse */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 6, 0, 0, 4); /* Sombra más pronunciada */
+}
+
+/* Cambios al hacer clic (pressed) */
+.friend-request-button:pressed {
+    -fx-background-color: #004085; /* Color de fondo aún más oscuro al hacer clic */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 4, 0, 0, 2); /* Sombra más ligera */
+}
+
+
+/* Estilo para la tabla de contactos */
 .table-view {
-    -fx-background-color: transparent;    /* Fondo transparente */
+    -fx-background-color: #1C1C1C; /* Color de fondo de la tabla (negro más oscuro) */
+    -fx-border-color: #444444;      /* Color del borde de la tabla */
+    -fx-border-width: 1px;          /* Ancho del borde */
+    -fx-padding: 10px;              /* Espaciado interno */
 }
 
-.table-row-cell {
-    -fx-background-color: #1b2838;        /* Color de fondo de la fila */
-    -fx-text-fill: #ffffff;               /* Color del texto */
-    -fx-font-size: 14px;                  /* Tamaño de la fuente */
+
+/* Cabecera de la tabla */
+.table-view .column-header {
+    -fx-background-color: #444444; /* Color de fondo de la cabecera */
+    -fx-text-fill: white;          /* Color del texto en la cabecera */
+    -fx-font-size: 14px;           /* Tamaño de fuente de la cabecera */
+    -fx-padding: 8px;              /* Espaciado interno en la cabecera */
 }
 
-.table-row-cell:selected {
-    -fx-background-color: #8ec8e7;        /* Color de fondo de la fila seleccionada */
+/* Filas de la tabla */
+.table-view .table-row-cell {
+    -fx-background-color: transparent; /* Color de fondo por defecto */
+    -fx-text-fill: white;              /* Color del texto de las filas */
 }
 
-.table-column {
-    -fx-alignment: center-left;           /* Alineación del contenido */
-    -fx-font-size: 14px;                  /* Tamaño de la fuente */
-    -fx-text-fill: #ffffff;               /* Color del texto */
-    -fx-padding: 10px;                    /* Relleno interno */
+/* Filas alternas */
+.table-view .table-row-cell:nth-child(odd) {
+    -fx-background-color: #35383D; /* Color de fondo para filas impares */
 }
 
-.table-column-header {
-    -fx-background-color: #2a475e;       /* Color de fondo del encabezado de la columna */
-    -fx-text-fill: #ffffff;               /* Color del texto */
-    -fx-font-size: 14px;                  /* Tamaño de la fuente */
-    -fx-font-weight: bold;                /* Texto en negrita */
-    -fx-padding: 10px;                    /* Relleno interno */
+/* Hover sobre filas */
+.table-view .table-row-cell:hover {
+    -fx-background-color: #5A5E64; /* Color de fondo al pasar el mouse */
 }
 
-.table-column-header:hover {
-    -fx-background-color: #3a637e;       /* Color de fondo del encabezado de la columna al pasar el cursor */
+/* Selección de filas */
+.table-view .table-row-cell:filled:selected {
+    -fx-background-color: #007BFF; /* Color de fondo al seleccionar */
+    -fx-text-fill: white;           /* Color del texto al seleccionar */
 }
 
-.table-column-header .label {
-    -fx-alignment: center-left;           /* Alineación del contenido del encabezado de la columna */
+/* Estilo para las celdas */
+.table-view .table-cell {
+    -fx-padding: 8px;               /* Espaciado interno en las celdas */
+    -fx-font-size: 14px;            /* Tamaño de fuente en las celdas */
 }
 
-.table-cell {
-    -fx-alignment: center-left;           /* Alineación del contenido */
-    -fx-font-size: 14px;                  /* Tamaño de la fuente */
-    -fx-text-fill: #ffffff;               /* Color del texto */
-    -fx-padding: 10px;                    /* Relleno interno */
+/* Celdas de la cabecera */
+.table-view .table-header-cell {
+    -fx-font-weight: bold;          /* Negrita en la cabecera */
 }
 
-.table-view:focused {
-    -fx-focus-color: transparent;         /* Color de foco transparente */
-    -fx-faint-focus-color: transparent;   /* Color de foco tenue transparente */
+
+.register-link:hover {
+    -fx-background-color: #45C16E; /* Tono verde más oscuro en hover */
 }
 
-.table-view .column-header-background {
-    -fx-background-color: transparent;    /* Color de fondo del encabezado de la columna */
+.register-link:pressed {
+    -fx-background-color: #3AB769; /* Aún más oscuro al hacer clic */
 }
 
-.table-view .filler {
-    -fx-background-color: transparent;    /* Color de relleno transparente */
+/* Estilo para el nombre */
+.contact-name {
+    -fx-font-size: 18px;               /* Tamaño de fuente */
+    -fx-text-fill: #4A90E2;            /* Color de texto azul */
+    -fx-font-weight: bold;              /* Negrita */
+    -fx-padding: 5px;                   /* Espaciado interno */
+    -fx-background-color: #2F3136;     /* Color de fondo opcional */
+    -fx-border-radius: 5px;            /* Bordes redondeados */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 4, 0, 0, 2); /* Sombra */
+    -fx-cursor: hand;                   /* Cambia el cursor al pasar sobre el texto */
+}
+
+/* Estilo adicional para nombres al pasar el mouse (hover) */
+.contact-name:hover {
+    -fx-text-fill: #007BFF;            /* Cambia a azul más brillante al pasar el mouse */
+    -fx-effect: dropshadow(gaussian, rgba(0, 123, 255, 0.4), 6, 0, 0, 4); /* Sombra más intensa */
+}
+
+/* Estilo general para la ListView */
+.list-view {
+    -fx-background-color: #E0E7FF; /* Color de fondo azul claro */
+    -fx-border-color: #3B82F6;      /* Color del borde azul */
+    -fx-border-width: 1px;          /* Ancho del borde */
+    -fx-padding: 10px;              /* Espaciado interno */
+}
+
+/* Estilo para las filas de la ListView */
+.list-view .list-view-cell {
+    -fx-background-color: transparent; /* Color de fondo por defecto */
+    -fx-text-fill: #1E3A8A;            /* Color del texto azul oscuro */
+    -fx-font-size: 14px;               /* Tamaño de fuente */
+    -fx-padding: 10px;                 /* Espaciado interno en las filas */
+}
+
+/* Cambios al pasar el mouse (hover) */
+.list-view .list-view-cell:hover {
+    -fx-background-color: #3B82F6; /* Color de fondo azul al pasar el mouse */
+    -fx-text-fill: white;          /* Cambia el color del texto a blanco al pasar el mouse */
+}
+
+/* Cambios al seleccionar una fila */
+.list-view .list-view-cell:filled:selected {
+    -fx-background-color: #1D4ED8; /* Color de fondo azul más oscuro al seleccionar */
+    -fx-text-fill: white;           /* Color del texto al s
+}
+
+/* Estilo para texto similar a Discord */
+.discord-text {
+    -fx-font-family: "Arial", "Helvetica", sans-serif; /* Fuentes sans-serif similares */
+    -fx-font-size: 14px;                             /* Tamaño de fuente */
+    -fx-text-fill: white;                             /* Color del texto blanco */
+    -fx-padding: 5px;                                /* Espaciado interno */
+}
+
+
+
+
+
+.forgot-password {
+    -fx-font-size: 12px;
+    -fx-text-fill: #7289DA;
+    -fx-underline: true;
+    -fx-cursor: hand;
+    -fx-padding: 15px 0 0 0;
+}
+
+.forgot-password:hover {
+    -fx-text-fill: #99AAB5;
+}
+
+/* Espaciado entre los elementos */
+.spacing {
+    -fx-padding: 10px 0;
+}
 }

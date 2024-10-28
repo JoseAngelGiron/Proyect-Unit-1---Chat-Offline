@@ -78,10 +78,14 @@ public class LoginController extends Controller implements Initializable {
     private void changeToRegister() throws IOException {
         App.setRoot(Scenes.REGISTER.getURL());
 
+        App.scene.getWindow().setWidth(420);
+        App.scene.getWindow().setHeight(720);
+
     }
 
     @FXML
     private void changeToMainWindow() throws IOException {
+
         App.setRoot(Scenes.ROOT.getURL());
 
     }

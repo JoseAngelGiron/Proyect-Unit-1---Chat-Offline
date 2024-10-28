@@ -211,7 +211,6 @@ public class AppController extends Controller implements Initializable {
     }
 
 
-
     /**
      * Changes the scene to the personal area.
      * @throws IOException If an error occurs while loading the personal area view.
@@ -243,7 +242,7 @@ public class AppController extends Controller implements Initializable {
      */
     @FXML
     public void changeToLogin() throws IOException {
-        UserSession.UserSession().closeSession();
+
         resizeWindow();
         changeScene(Scenes.LOGIN, window, null);
     }
@@ -287,9 +286,8 @@ public class AppController extends Controller implements Initializable {
 
     private void resizeWindow(){
         Stage stage = (Stage) window.getScene().getWindow();
-
-        stage.setWidth(480);
-        stage.setHeight(320);
+        stage.setWidth(640);
+        stage.setHeight(540);
         stage.centerOnScreen();
     }
 

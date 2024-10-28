@@ -9,9 +9,10 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="499.0" prefWidth="630.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.JoseAngelGiron.view.ChatController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="499.0" prefWidth="630.0" styleClass="modal-window" stylesheets="@assets/aplication.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.JoseAngelGiron.view.ChatController">
    <children>
       <GridPane layoutX="29.0" layoutY="8.0" prefHeight="432.0" prefWidth="549.0">
         <columnConstraints>
@@ -45,8 +46,14 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Text fx:id="nameContact" strokeType="OUTSIDE" strokeWidth="0.0" text="Name-Contact" />
-                        <Text fx:id="statusContact" strokeType="OUTSIDE" strokeWidth="0.0" text="Status" GridPane.rowIndex="1" />
+                        <Text fx:id="nameContact" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Name-Contact">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font></Text>
+                        <Text fx:id="statusContact" fill="#ece9eb" strokeType="OUTSIDE" strokeWidth="0.0" text="Status" wrappingWidth="256.49612045288086" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font></Text>
                      </children>
                   </GridPane>
                </children>
@@ -61,8 +68,8 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <TextArea fx:id="sendBar" prefHeight="16.0" prefWidth="404.0" GridPane.rowIndex="1" />
-                  <Button mnemonicParsing="false" onAction="#sendMessage" text="Envíar" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextArea fx:id="sendBar" prefHeight="16.0" prefWidth="404.0" styleClass="root" stylesheets="@assets/aplication.css" GridPane.rowIndex="1" />
+                  <Button mnemonicParsing="false" onAction="#sendMessage" styleClass="login-button" stylesheets="@assets/aplication.css" text="Envíar" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <Separator prefWidth="200.0" />
                </children>
             </GridPane>
@@ -73,16 +80,16 @@
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="220.59996337890624" minWidth="10.0" prefWidth="220.59996337890624" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="197.20001220703125" minWidth="10.0" prefWidth="89.40003662109376" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="166.8" minWidth="10.0" prefWidth="166.8" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="108.4000244140625" minWidth="10.0" prefWidth="35.599999999999966" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="101.199951171875" minWidth="10.0" prefWidth="66.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="249.59996337890618" minWidth="10.0" prefWidth="249.59996337890618" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="108.4000244140625" minWidth="0.8000366210937955" prefWidth="0.8000366210937955" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="101.199951171875" minWidth="0.0" prefWidth="0.0" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button mnemonicParsing="false" onAction="#generateConversation" prefHeight="26.0" prefWidth="206.0" text="Exportar conversación" />
-            <Button mnemonicParsing="false" onAction="#analyzeConversation" text="Analisis de conversación" GridPane.columnIndex="2" />
+            <Button mnemonicParsing="false" onAction="#generateConversation" prefHeight="26.0" prefWidth="206.0" styleClass="custom-button" stylesheets="@assets/aplication.css" text="Exportar conversación" />
+            <Button mnemonicParsing="false" onAction="#analyzeConversation" prefHeight="42.0" prefWidth="231.0" styleClass="custom-button" stylesheets="@assets/aplication.css" text="Analisis de conversación" GridPane.columnIndex="2" />
          </children>
       </GridPane>
    </children>
