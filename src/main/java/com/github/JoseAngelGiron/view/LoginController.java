@@ -86,6 +86,9 @@ public class LoginController extends Controller implements Initializable {
     @FXML
     private void changeToMainWindow() throws IOException {
 
+        App.scene.getWindow().setWidth(1100);
+        App.scene.getWindow().setHeight(720);
+        App.scene.getWindow().centerOnScreen();
         App.setRoot(Scenes.ROOT.getURL());
 
     }

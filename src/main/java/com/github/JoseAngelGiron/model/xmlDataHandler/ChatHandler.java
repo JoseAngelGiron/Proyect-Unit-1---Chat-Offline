@@ -11,7 +11,11 @@ public class ChatHandler implements IChatHandler<Message, Chat> {
 
     private static final String chatFilePath = "C:\\Users\\the_l\\IdeaProjects\\Project-1DA\\src\\main\\xmlStorage\\chats\\";
 
-
+    /**
+     * No usages
+     * @param name
+     * @return
+     */
     @Override
     public Chat findAll(String name) {
         return null;
@@ -35,11 +39,21 @@ public class ChatHandler implements IChatHandler<Message, Chat> {
         return messageToReturn;
     }
 
+    /**
+     * No usages
+     * @param entity
+     * @return
+     */
     @Override
     public boolean update(Message entity) {
         return false;
     }
 
+    /**
+     * No usages
+     * @param name
+     * @return
+     */
     @Override
     public boolean delete(String name) {
         return false;
@@ -50,13 +64,13 @@ public class ChatHandler implements IChatHandler<Message, Chat> {
         int numberToReturn = 0;
         if(chat!=null){
             for(Message message: chat.getMessages()){
-                System.out.println(message.getId());
+
                 if(message.getId()>numberToReturn){
                     numberToReturn = message.getId();
                 }
             }
         }
-        System.out.println("Numero del ultimo mensaje: "+numberToReturn+1);
+
         return numberToReturn+1;
 
     }

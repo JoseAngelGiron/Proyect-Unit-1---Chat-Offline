@@ -16,19 +16,6 @@ public class ContactListHandler implements IContactListHandler<Contact, ContactL
         return XMLManager.readXML(contactListFilePath+name+".xml", ContactList.class);
     }
 
-    public Contact findByID(String UserName, int idSender){
-        Contact contactToReturn = new Contact();
-        ContactList contactList = findAll(UserName);
-
-        for (Contact contact: contactList.getContacts()) {
-            if(contact.getId() == idSender) {
-                contactToReturn = contact;
-            }
-        }
-        return contactToReturn;
-    }
-
-
 
 
 
@@ -48,7 +35,11 @@ public class ContactListHandler implements IContactListHandler<Contact, ContactL
         return contactToReturn;
     }
 
-
+    /**
+     * No usages
+     * @param entity
+     * @return
+     */
     @Override
     public boolean update(Contact entity) {
         return false;
