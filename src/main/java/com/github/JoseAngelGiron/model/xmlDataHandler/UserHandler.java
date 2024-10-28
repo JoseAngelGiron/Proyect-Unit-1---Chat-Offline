@@ -143,17 +143,17 @@ public class UserHandler implements IXMLHandler<User, UserList>{
         boolean updated = false;
         UserList userList = findAll();
         for(User user: userList.getListOfUsers()){
-            if(userList.getListOfUsers().contains(entity)){
+            if(user.equals(entity)){
                 userList.getListOfUsers().remove(user);
-                userList.getListOfUsers().add(user);
+                userList.getListOfUsers().add(entity);
                 XMLManager.writeXML(userList, usersFilePath);
                 updated = true;
                 break;
             }
         }
 
-        return updated;
 
+        return updated;
     }
 
     @Override

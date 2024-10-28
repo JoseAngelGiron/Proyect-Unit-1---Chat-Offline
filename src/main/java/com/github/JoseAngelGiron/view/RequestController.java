@@ -22,6 +22,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import static com.github.JoseAngelGiron.view.AppController.openModal;
+import static com.github.JoseAngelGiron.view.AppController.startTimedUpdate;
 
 public class RequestController extends Controller implements Initializable {
 
@@ -42,7 +43,7 @@ public class RequestController extends Controller implements Initializable {
 
     private ObservableList<FriendshipRequest> friendshipRequests;
     private List<FriendshipRequest> friendshipRequestsReceived;
-    private Timeline timeline;
+
 
 
 
@@ -52,9 +53,6 @@ public class RequestController extends Controller implements Initializable {
 
         friendshipRequestsReceived = (List<FriendshipRequest>) input;
         changeLabel();
-        timeline.play();
-
-
 
     }
 
@@ -65,10 +63,11 @@ public class RequestController extends Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        timeline = new Timeline(new KeyFrame(Duration.seconds(5), event -> refreshRequestTable())); // Cada 5 segundos
-        timeline.setCycleCount(Timeline.INDEFINITE);
+        startTimedUpdate(this::refreshRequestTable, 5);
 
     }
+
+
 
     private void changeLabel(){
         if(!friendshipRequestsReceived.isEmpty()){
@@ -77,6 +76,20 @@ public class RequestController extends Controller implements Initializable {
             labelRequests.setText("No tienes peticiones de amistad actualmente");
         }
     }
+
+    private List<FriendshipRequest> getUpdatedFriendshipRequests() {
+        FriendshipRequestHandler friendshipRequestHandler = new FriendshipRequestHandler();
+        friendshipRequestsReceived = friendshipRequestHandler.findByReceiver(UserSession.UserSession().getUserLoggedIn().getUsername());
+        return friendshipRequestsReceived;
+    }
+
+
+    private void refreshRequestTable() {
+
+        List<FriendshipRequest> updatedRequests = getUpdatedFriendshipRequests();
+        showRequests(updatedRequests);
+    }
+
 
     private void showRequests(List<FriendshipRequest> list) {
         friendshipRequests = FXCollections.observableArrayList(list);
@@ -123,16 +136,5 @@ public class RequestController extends Controller implements Initializable {
     }
 
 
-    private void refreshRequestTable() {
 
-        List<FriendshipRequest> updatedRequests = getUpdatedFriendshipRequests();
-        showRequests(updatedRequests);
-    }
-
-
-    private List<FriendshipRequest> getUpdatedFriendshipRequests() {
-        FriendshipRequestHandler friendshipRequestHandler = new FriendshipRequestHandler();
-        friendshipRequestHandler.findByReceiver(UserSession.UserSession().getUserLoggedIn().getUsername());
-        return friendshipRequestsReceived; //
-    }
 }

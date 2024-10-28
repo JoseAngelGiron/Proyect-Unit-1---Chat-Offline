@@ -1,7 +1,10 @@
 package com.github.JoseAngelGiron.model.xmlDataHandler;
 import com.github.JoseAngelGiron.model.entity.Contact;
 import com.github.JoseAngelGiron.model.entity.ContactList;
+import com.github.JoseAngelGiron.model.entity.User;
 import com.github.JoseAngelGiron.persistance.XMLManager;
+
+import java.util.Iterator;
 
 public class ContactListHandler implements IContactListHandler<Contact, ContactList, String>{
 
@@ -9,12 +12,13 @@ public class ContactListHandler implements IContactListHandler<Contact, ContactL
 
     @Override
     public ContactList findAll(String name) {
+
         return XMLManager.readXML(contactListFilePath+name+".xml", ContactList.class);
     }
 
     public Contact findByID(String UserName, int idSender){
         Contact contactToReturn = new Contact();
-        ContactList contactList = findAll(UserName+"-"+idSender);
+        ContactList contactList = findAll(UserName);
 
         for (Contact contact: contactList.getContacts()) {
             if(contact.getId() == idSender) {
@@ -31,7 +35,7 @@ public class ContactListHandler implements IContactListHandler<Contact, ContactL
     @Override
     public Contact save(String entity, Contact entity2) {
         Contact contactToReturn = new Contact();
-        ContactList contactList = findAll(entity+"-"+entity2.getId());
+        ContactList contactList = findAll(entity);
 
 
         if (!contactList.getContacts().contains(entity2)) {
@@ -50,16 +54,35 @@ public class ContactListHandler implements IContactListHandler<Contact, ContactL
         return false;
     }
 
-    @Override
-    public boolean delete(String name) {
-        return false;
+
+    public boolean delete(User entity, String nameOfList) {
+        ContactList contactList = findAll(nameOfList);
+        boolean deleted = false;
+
+        Iterator<Contact> iterator = contactList.getContacts().iterator();
+        while (iterator.hasNext()) {
+            Contact contact = iterator.next();
+
+            if (contact.getId()==entity.getId()) {
+                iterator.remove();
+                deleted = true;
+                break;
+            }
+        }
+
+        if (deleted) {
+            XMLManager.writeXML(contactList, contactListFilePath+nameOfList+".xml");
+        }
+
+        return deleted;
     }
+
 
     @Override
     public boolean create(String name, int id) {
         ContactList contactList = new ContactList(id, name);
 
-        return XMLManager.createXML(contactList, contactListFilePath+name+"-"+id+".xml");
+        return XMLManager.createXML(contactList, contactListFilePath+name+".xml");
     }
 
     public static ContactListHandler build(){

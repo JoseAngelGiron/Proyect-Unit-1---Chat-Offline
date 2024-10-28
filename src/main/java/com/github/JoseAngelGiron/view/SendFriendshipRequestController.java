@@ -52,13 +52,11 @@ public class SendFriendshipRequestController extends Controller implements Initi
 
         fr.create();
         friendshipRequest = fr.save(friendshipRequest);
-        if(friendshipRequest == null){
-            closeWindow();
-        }else{
+        if(friendshipRequest.getIdSender() == 0){
             errorLabel.setVisible(true);
-
+        }else{
+            closeWindow();
         }
-
     }
 
 

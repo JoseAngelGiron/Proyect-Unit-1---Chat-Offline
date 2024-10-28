@@ -5,17 +5,19 @@ public enum Scenes {
 
     LOGIN("view/login"),
     REGISTER("view/register"),
-
     USERALREADYREGISTER("view/userAlreadyRegistered"),
+
     START("view/start"),
     FRIENDSHIPREQUEST("view/sendFriendshipRequest"),
 
     REQUESTRECEIVED("view/requestsReceived"),
     ACCEPTANDREJECT("view/acceptAndReject"),
 
-    CHAT("view/chat");
+    CHAT("view/chat"),
 
-
+    PROFILE("view/profile"),
+    CHANGEPHOTO("view/changePhoto"),
+    DELETECONTACT("view/deleteContact");
 
     private String url;
 

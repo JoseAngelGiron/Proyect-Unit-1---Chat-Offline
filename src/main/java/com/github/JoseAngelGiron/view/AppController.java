@@ -7,6 +7,8 @@ import com.github.JoseAngelGiron.model.entity.User;
 import com.github.JoseAngelGiron.model.session.UserSession;
 import com.github.JoseAngelGiron.model.xmlDataHandler.ContactListHandler;
 import com.github.JoseAngelGiron.model.xmlDataHandler.FriendshipRequestHandler;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -27,11 +29,12 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.time.LocalDateTime;
+
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.Set;
@@ -99,11 +102,26 @@ public class AppController extends Controller implements Initializable {
         hideAdministrationButton();
         setUserData();
         setContacts();
+        startTimedUpdate(this::updateProfilePicture, 5);
+        startTimedUpdate(this::setContacts, 5);
         try {
             changeToStart();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+
+    public static void startTimedUpdate(Runnable functionToExecute, int intervalSeconds) {
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(intervalSeconds), event -> functionToExecute.run()));
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.play();
+    }
+
+    private void updateProfilePicture() {
+        File photo = new File(userLogged.getPhoto());
+        Image profileImage = new Image(photo.toURI().toString());
+        photoUser.setImage(profileImage);
     }
 
     /**
@@ -145,7 +163,7 @@ public class AppController extends Controller implements Initializable {
      */
     @FXML
     public void changeToProfile() throws IOException {
-        //changeScene(Scenes.PROFILE, mainWindow,null);
+        changeScene(Scenes.PROFILE, mainWindow,null);
     }
 
     /**
@@ -205,7 +223,7 @@ public class AppController extends Controller implements Initializable {
 
     private void setContacts(){
 
-        ContactList contactList = contactListHandler.findAll(userLogged.getUsername()+"-"+userLogged.getId());
+        ContactList contactList = contactListHandler.findAll(userLogged.getUsername());
 
         Set<User> usersInContact = build().findListOfUsersByID(contactList);
 

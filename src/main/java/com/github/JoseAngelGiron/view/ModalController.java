@@ -27,10 +27,7 @@ public class ModalController extends Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-
-
     }
-
 
 
     /**
