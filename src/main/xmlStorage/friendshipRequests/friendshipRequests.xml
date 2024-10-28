@@ -1,4 +1,26 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <friendshipRequests>
-    <requests/>
+    <requests>
+        <request>
+            <sender>JAngel</sender>
+            <idSender>3</idSender>
+            <receiver>Probando</receiver>
+            <status>PENDING</status>
+            <date>2024-10-27T17:10:25.6356223</date>
+        </request>
+        <request>
+            <sender>JAngel</sender>
+            <idSender>3</idSender>
+            <receiver>name2</receiver>
+            <status>PENDING</status>
+            <date>2024-10-27T17:14:52.9042647</date>
+        </request>
+        <request>
+            <sender>JAngel</sender>
+            <idSender>3</idSender>
+            <receiver>Pepe</receiver>
+            <status>PENDING</status>
+            <date>2024-10-27T17:48:31.4259222</date>
+        </request>
+    </requests>
 </friendshipRequests>

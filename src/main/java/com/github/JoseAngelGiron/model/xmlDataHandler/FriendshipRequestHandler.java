@@ -17,56 +17,6 @@ public class FriendshipRequestHandler implements IXMLHandler<FriendshipRequest, 
         return XMLManager.readXML(friendshipFilePath, FriendshipRequestList.class);
     }
 
-    @Override
-    public FriendshipRequest save(FriendshipRequest entity) {
-
-
-        FriendshipRequest friendshipRequest = new FriendshipRequest();
-        if(checkIfContactExists(entity)){
-            FriendshipRequestList friendshipRequestList = findAll();
-
-            if( friendshipRequestList.addRequest(entity) ){
-
-                XMLManager.writeXML(friendshipRequestList, friendshipFilePath);
-                friendshipRequest = entity;
-            }
-        }
-
-        return friendshipRequest;
-    }
-
-    private boolean checkIfContactExists(FriendshipRequest entity){
-        ContactListHandler contactListHandler = new ContactListHandler();
-
-        ContactList contactList = contactListHandler.findAll(entity.getSender()+"-"+entity.getIdSender());
-        boolean contactAlreadyExists= false;
-        for (Contact contact: contactList.getContacts()){
-
-            if(contact.getId()==entity.getIdSender()){
-                System.out.println(contact.getNameOfContact());
-                contactAlreadyExists = true;
-                break;
-            }
-        }
-        return contactAlreadyExists;
-    }
-
-    @Override
-    public boolean update(FriendshipRequest entity) {
-        FriendshipRequestList listOfRequests = findAll();
-        boolean updated = false;
-        for(FriendshipRequest friendshipRequest: listOfRequests.getRequests()){
-            if(friendshipRequest.equals(entity)){
-                friendshipRequest.setStatus(entity.getStatus());
-                friendshipRequest.setDate(entity.getDate());
-                updated = true;
-                break;
-
-            }
-        }
-        return updated;
-    }
-
     public List<FriendshipRequest> findBySender(String name){
 
         FriendshipRequestList listOfRequests = findAll();
@@ -116,6 +66,81 @@ public class FriendshipRequestHandler implements IXMLHandler<FriendshipRequest, 
 
         return deleted;
     }
+
+
+    public boolean deleteOneRequest(FriendshipRequest friendshipRequest) {
+
+        FriendshipRequestList frList = findAll();
+        boolean deleted = false;
+
+        for(FriendshipRequest frRequest : frList.getRequests()){
+
+            if(frRequest.equals(friendshipRequest)){
+                frList.removeRequest(frRequest);
+                deleted = true;
+                break;
+            }
+
+        }
+
+        XMLManager.writeXML(frList ,friendshipFilePath);
+        return deleted;
+    }
+
+
+
+    private boolean checkIfContactNotExists(FriendshipRequest entity){
+        ContactListHandler contactListHandler = new ContactListHandler();
+
+        ContactList contactList = contactListHandler.findAll(entity.getSender());
+        boolean contactAlreadyExists= false;
+        for (Contact contact: contactList.getContacts()){
+
+            if(contact.getNameOfContact().equalsIgnoreCase(entity.getReceiver())){
+
+                contactAlreadyExists = true;
+                break;
+            }
+        }
+        return contactAlreadyExists;
+    }
+
+    @Override
+    public FriendshipRequest save(FriendshipRequest entity) {
+
+
+        FriendshipRequest friendshipRequest = new FriendshipRequest();
+        if(!checkIfContactNotExists(entity)){
+            FriendshipRequestList friendshipRequestList = findAll();
+
+            if( friendshipRequestList.addRequest(entity) ){
+
+                XMLManager.writeXML(friendshipRequestList, friendshipFilePath);
+                friendshipRequest = entity;
+            }
+        }
+
+        return friendshipRequest;
+    }
+
+
+    @Override
+    public boolean update(FriendshipRequest entity) {
+        FriendshipRequestList listOfRequests = findAll();
+        boolean updated = false;
+        for(FriendshipRequest friendshipRequest: listOfRequests.getRequests()){
+            if(friendshipRequest.equals(entity)){
+                friendshipRequest.setStatus(entity.getStatus());
+                friendshipRequest.setDate(entity.getDate());
+                updated = true;
+                break;
+
+            }
+        }
+        return updated;
+    }
+
+
 
     @Override
     public boolean create() {

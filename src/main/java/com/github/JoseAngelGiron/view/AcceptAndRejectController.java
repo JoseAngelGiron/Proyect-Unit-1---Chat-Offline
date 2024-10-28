@@ -61,10 +61,11 @@ public class AcceptAndRejectController extends Controller implements Initializab
 
         if(user.getId()>=0){
             contactListHandler.save(userLogged.getUsername(), new Contact(user.getId(), user.getUsername()));
+
             contactListHandler.create(friendshipRequest.getSender(), friendshipRequest.getIdSender());
-            contactListHandler.save(friendshipRequest.getSender(),new Contact(userLogged.getId(), userLogged.getUsername()));
-            friendshipRequest.setStatus(FriendshipRequestStatus.ACCEPTED);
-            build().update(friendshipRequest);
+            contactListHandler.save(friendshipRequest.getSender(), new Contact(userLogged.getId(), userLogged.getUsername()));
+
+            build().deleteOneRequest(friendshipRequest);
             close();
         }else{
             close();
@@ -73,9 +74,7 @@ public class AcceptAndRejectController extends Controller implements Initializab
 
     @FXML
     private void rejectRequest(){
-        //Lógica para cambiar estado o borra petición
-        //friendshipRequest.setStatus(friendshipRequest.setStatus(FriendshipRequestStatus.REJECTED));
-
+        build().deleteOneRequest(friendshipRequest);
         close();
 
     }

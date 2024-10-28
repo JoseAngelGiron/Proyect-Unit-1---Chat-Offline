@@ -45,8 +45,8 @@ public class ContactList {
         this.nameOfUser = nameOfUser;
     }
 
-    @XmlElementWrapper
-    @XmlElement
+    @XmlElementWrapper(name = "contacts")
+    @XmlElement(name = "contact")
     public List<Contact> getContacts() {
         return contacts;
     }

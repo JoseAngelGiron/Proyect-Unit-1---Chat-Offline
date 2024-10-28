@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="351.0" prefWidth="663.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.JoseAngelGiron.view.DeleteContact">
+   <children>
+      <GridPane layoutX="3.0" layoutY="1.0" prefHeight="349.0" prefWidth="606.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="231.19998779296876" minHeight="10.0" prefHeight="231.19998779296876" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="161.60004882812504" minHeight="10.0" prefHeight="85.60001220703126" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="43.59995117187498" minHeight="10.0" prefHeight="23.599951171874977" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <ImageView fx:id="photoContact" fitHeight="231.0" fitWidth="295.0" pickOnBounds="true" preserveRatio="true" />
+            <GridPane prefHeight="83.0" prefWidth="265.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="260.0000457763672" minWidth="10.0" prefWidth="96.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="192.0" minWidth="10.0" prefWidth="192.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Button mnemonicParsing="false" onAction="#deleteContact" text="Borrar" GridPane.rowIndex="1" />
+                  <Button fx:id="closeButton" mnemonicParsing="false" onAction="#close" text="Cancelar" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+               </children>
+            </GridPane>
+            <GridPane prefHeight="146.0" prefWidth="287.0" GridPane.columnIndex="1">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                  <RowConstraints maxHeight="46.000006103515624" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="46.000006103515624" minHeight="10.0" prefHeight="26.400012207031246" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="84.4" minHeight="10.0" prefHeight="19.400000000000006" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="101.19998397827149" minHeight="10.0" prefHeight="24.19999999999999" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="¿Deseas borrar a este usuario de tu lista de contactos?" wrappingWidth="286.892578125" GridPane.rowIndex="1" />
+                  <Label fx:id="name" text="Nombre" GridPane.rowIndex="2" />
+                  <Label fx:id="status" text="Estado" GridPane.rowIndex="3" />
+               </children>
+            </GridPane>
+         </children>
+      </GridPane>
+   </children>
+</AnchorPane>
