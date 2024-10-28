@@ -47,7 +47,15 @@ public class RequestController extends Controller implements Initializable {
 
 
 
-
+    /**
+     * This method is called when the controller is opened.
+     * It initializes the list of friendship requests received
+     * by the current user and updates the label accordingly.
+     *
+     * @param input The input parameter containing the list of friendship requests.
+     * @param input2 Not used in this implementation.
+     * @throws IOException If an error occurs while handling the input.
+     */
     @Override
     public void onOpen(Object input, Object input2) throws IOException {
 
@@ -61,6 +69,13 @@ public class RequestController extends Controller implements Initializable {
 
     }
 
+    /**
+     * Initializes the controller class.
+     * This method sets up a timed update that refreshes the friendship request table every 5 seconds.
+     *
+     * @param url Not used in this implementation.
+     * @param resourceBundle Not used in this implementation.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         startTimedUpdate(this::refreshRequestTable, 5);
@@ -69,6 +84,11 @@ public class RequestController extends Controller implements Initializable {
 
 
 
+    /**
+     * Updates the label displaying the friendship request status.
+     * If there are friendship requests, it calls {@code showRequests} to display them;
+     * otherwise, it updates the label to indicate no current requests.
+     */
     private void changeLabel(){
         if(!friendshipRequestsReceived.isEmpty()){
             showRequests(friendshipRequestsReceived);
@@ -77,6 +97,11 @@ public class RequestController extends Controller implements Initializable {
         }
     }
 
+    /**
+     * Retrieves the updated list of friendship requests for the logged-in user.
+     *
+     * @return A list of updated friendship requests.
+     */
     private List<FriendshipRequest> getUpdatedFriendshipRequests() {
         FriendshipRequestHandler friendshipRequestHandler = new FriendshipRequestHandler();
         friendshipRequestsReceived = friendshipRequestHandler.findByReceiver(UserSession.UserSession().getUserLoggedIn().getUsername());
@@ -84,13 +109,22 @@ public class RequestController extends Controller implements Initializable {
     }
 
 
+    /**
+     * Refreshes the friendship request table by fetching the latest requests
+     * and updating the displayed list.
+     */
     private void refreshRequestTable() {
 
         List<FriendshipRequest> updatedRequests = getUpdatedFriendshipRequests();
         showRequests(updatedRequests);
     }
 
-
+    /**
+     * Displays the list of friendship requests in the table view.
+     * This method populates the table with user names, statuses, and request dates.
+     *
+     * @param list A list of friendship requests to display.
+     */
     private void showRequests(List<FriendshipRequest> list) {
         friendshipRequests = FXCollections.observableArrayList(list);
         friendshipRequestTableView.setItems(friendshipRequests);

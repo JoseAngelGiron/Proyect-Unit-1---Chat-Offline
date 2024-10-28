@@ -49,7 +49,14 @@ public class ChatController extends Controller implements Initializable {
     private ChatHandler chatHandler;
     private Chat chatNow;
 
-
+    /**
+     * Called when the chat view is opened.
+     * Initializes the chat with the specified user to write to.
+     *
+     * @param input   The user to write to (User object).
+     * @param input2  Unused parameter (can be null).
+     * @throws IOException If an I/O error occurs.
+     */
     @Override
     public void onOpen(Object input, Object input2) throws IOException {
         userToWrite = (User) input;
@@ -63,6 +70,15 @@ public class ChatController extends Controller implements Initializable {
 
     }
 
+    /**
+     * Initializes the chat interface.
+     * Sets up the message list and retrieves the logged-in user.
+     *
+     * @param url             The URL location used to resolve relative paths for the root object,
+     *                        or null if the location is not known.
+     * @param resourceBundle  The resources used to localize the root object, or null if
+     *                        the root object was not localized.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -73,6 +89,10 @@ public class ChatController extends Controller implements Initializable {
 
     }
 
+    /**
+     * Sends a message to the user being chatted with.
+     * Validates the message content and saves it to the chat history.
+     */
     @FXML
     private void sendMessage() {
 
@@ -89,6 +109,10 @@ public class ChatController extends Controller implements Initializable {
         }
     }
 
+    /**
+     * Generates a conversation report and allows the user to save it to a file.
+     * Supports saving as CSV or text format.
+     */
     @FXML
     public void generateConversation() {
         Chat chat = XMLManager.readXML(chatNow, chatNow.getFilePath());
@@ -112,7 +136,12 @@ public class ChatController extends Controller implements Initializable {
         }
     }
 
-
+    /**
+     * Exports chat messages to a text file.
+     *
+     * @param file The text file to write to.
+     * @param chat The chat object containing messages.
+     */
     private void exportAsTxt(File file, Chat chat) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
             for (Message message : chat.getMessages()) {
@@ -130,6 +159,12 @@ public class ChatController extends Controller implements Initializable {
         }
     }
 
+    /**
+     * Exports chat messages to a CSV file.
+     *
+     * @param chat The chat object containing messages.
+     * @param file The CSV file to write to.
+     */
     private void exportChatToCSV(Chat chat, File file) {
         try (OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream(file), StandardCharsets.UTF_8)) {
 
@@ -152,7 +187,10 @@ public class ChatController extends Controller implements Initializable {
         }
     }
 
-
+    /**
+     * Analyzes the conversation and allows the user to save the analysis.
+     * The analysis is saved as a text file.
+     */
     @FXML
     public void analyzeConversation() {
         Chat chat = XMLManager.readXML(chatNow, chatNow.getFilePath());
@@ -167,7 +205,12 @@ public class ChatController extends Controller implements Initializable {
         }
     }
 
-
+    /**
+     * Exports an analysis of the conversation to a text file.
+     *
+     * @param chat The chat object containing messages.
+     * @param file The text file to write to.
+     */
     private void exportAnalisisToTXT(Chat chat, File file) {
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
@@ -233,6 +276,13 @@ public class ChatController extends Controller implements Initializable {
         }
     }
 
+
+    /**
+     * Retrieves a list of senders from the chat messages.
+     *
+     * @param chat The chat object containing messages.
+     * @return List of sender usernames.
+     */
     private List<String> getListOfSenders(Chat chat){
         List<String> senders = new ArrayList<>();
         for (Message message : chat.getMessages()) {
@@ -241,6 +291,12 @@ public class ChatController extends Controller implements Initializable {
         return senders;
     }
 
+    /**
+     * Finds the most frequently occurring word in the messages of a chat using a Map for counting.
+     *
+     * @param chat The chat object containing messages.
+     * @return The most frequent word in lowercase, or a message indicating no words were found.
+     */
     private String getMostFrequentWord(Chat chat) {
         List<String> words = getWords(chat);
 
@@ -258,6 +314,12 @@ public class ChatController extends Controller implements Initializable {
         return mostFrequent != null ? mostFrequent : "No hay palabras";
     }
 
+    /**
+     * Extracts words from chat messages for analysis.
+     *
+     * @param chat The chat object containing messages.
+     * @return List of words used in the messages, all in lowercase.
+     */
     private List<String> getWords(Chat chat) {
         List<String> words = new ArrayList<>();
         for (Message message : chat.getMessages()) {
@@ -271,7 +333,12 @@ public class ChatController extends Controller implements Initializable {
         return words;
     }
 
-
+    /**
+     * Retrieves a list of the most common words used in the chat messages along with their frequencies.
+     *
+     * @param chat The chat object containing messages.
+     * @return List of common words with their frequency.
+     */
     private List<String> getMostCommonWords(Chat chat) {
 
         List<String> words = new ArrayList<>();
@@ -315,13 +382,10 @@ public class ChatController extends Controller implements Initializable {
     }
 
 
-
-
-
-
-
-
-
+    /**
+     * Checks if a chat already exists with the specified user.
+     * If not, creates a new chat session.
+     */
     private void checkIfAChatAlreadyExists(){
 
         chatHandler = new ChatHandler();
@@ -336,12 +400,20 @@ public class ChatController extends Controller implements Initializable {
         }
     }
 
+    /**
+     * Loads existing messages from the chat into the message view.
+     *
+     * @param chat The chat object containing messages to load.
+     */
     private void loadExistingMessages(Chat chat) {
         for (Message message : chat.getMessages()) {
             messages.add(message);
         }
     }{}
 
+    /**
+     * Sets the user information for the contact being chatted with, including their photo and status.
+     */
     private void setUserToWrite(){
 
         File photo = new File(userToWrite.getPhoto());

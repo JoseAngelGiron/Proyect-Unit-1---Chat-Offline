@@ -43,6 +43,15 @@ public class SendFriendshipRequestController extends Controller implements Initi
 
     }
 
+    /**
+     * Sends a friendship request from the currently logged-in user to another user.
+     *
+     * This method retrieves the logged-in user from the session, creates a new
+     * FriendshipRequest object with the necessary details (sender's username and ID,
+     * and the receiver's username), and attempts to save the request using the
+     * FriendshipRequestHandler. If the request is successfully saved, it closes the
+     * current window; otherwise, it displays an error message.
+     */
     @FXML
     public void sendRequest(){
         User user = UserSession.UserSession().getUserLoggedIn();

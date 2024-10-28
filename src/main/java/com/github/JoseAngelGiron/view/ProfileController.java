@@ -99,6 +99,13 @@ public class ProfileController extends Controller implements Initializable {
 
     }
 
+    /**
+     * Opens a modal window that allows the user to change their profile photo.
+     * This method triggers a modal scene defined by the `CHANGESETTINGS` scene identifier,
+     * prompting the user to select a new photo to use as their profile picture.
+     *
+     * @throws IOException If an input or output error occurs while opening the modal window.
+     */
     @FXML
     public void changeProfilePhoto() throws IOException {
         openModal(Scenes.CHANGESETTINGS, "Seleccione la foto que desea usar", this, null);
@@ -106,7 +113,15 @@ public class ProfileController extends Controller implements Initializable {
     }
 
 
-
+    /**
+     * Updates the user interface elements with the current user's data.
+     * This method populates the name, status, email, and profile photo fields
+     * of the UI with information retrieved from the currently logged-in user.
+     *
+     * The method retrieves the user's data from the `currentUser` object,
+     * converts the photo file path into a URI for the profile image,
+     * and updates the respective UI components accordingly.
+     */
     private void setUserData(){
         name.setText(currentUser.getUsername());
         status.setText(currentUser.getStatus());
@@ -117,6 +132,19 @@ public class ProfileController extends Controller implements Initializable {
         photoProfile.setImage(profileImage);
     }
 
+    /**
+     * Initializes and populates the table view for displaying friendship requests
+     * sent by the current user. This method retrieves the list of friendship requests
+     * from the data source, formats the relevant details, and sets up the table view
+     * columns to display the sender, status, and date of each request.
+     *
+
+     *
+     * The friendship requests are fetched from the XML using the
+     * {@code build().findBySender(currentUser.getUsername())} method, which returns
+     * a list of {@code FriendshipRequest} objects. These requests are then converted
+     * into an observable list that is set to the current requests table view.
+     */
     private void setRequests(){
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
@@ -150,6 +178,15 @@ public class ProfileController extends Controller implements Initializable {
 
     }
 
+    /**
+     * Initializes and populates the table view for displaying the user's contact list.
+     * This method retrieves all contacts for the current user and sets up the table
+     * columns to display each contact's photo, username, and status.
+     *
+     * Additionally, this method sets up a mouse click event handler for the contacts table
+     * that listens for double-click events. Upon a double-click, it prompts the user with
+     * a modal dialog asking if they wish to delete the selected contact from their list.
+     */
     private void setContacts(){
 
         ContactList contactList = contactListHandler.findAll(currentUser.getUsername());

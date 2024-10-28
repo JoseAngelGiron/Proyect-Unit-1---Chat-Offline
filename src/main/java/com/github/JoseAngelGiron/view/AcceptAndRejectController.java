@@ -2,7 +2,6 @@ package com.github.JoseAngelGiron.view;
 
 import com.github.JoseAngelGiron.model.entity.Contact;
 import com.github.JoseAngelGiron.model.entity.FriendshipRequest;
-import com.github.JoseAngelGiron.model.entity.FriendshipRequestStatus;
 import com.github.JoseAngelGiron.model.entity.User;
 import com.github.JoseAngelGiron.model.session.UserSession;
 import com.github.JoseAngelGiron.model.xmlDataHandler.ContactListHandler;
@@ -33,7 +32,19 @@ public class AcceptAndRejectController extends Controller implements Initializab
     private FriendshipRequest friendshipRequest;
     private ContactListHandler contactListHandler;
 
-
+    /**
+     * Initializes the view and loads a friendship request when the view is opened.
+     *
+     * This method sets up the initial state when the view is opened, initializing
+     * a new instance of ContactListHandler and displaying a prompt with the sender’s
+     * name from the provided FriendshipRequest. The method may throw an IOException
+     * if an error occurs during the initialization.
+     *
+     * @param input   An object passed as input (not used in this method).
+     * @param input2  The FriendshipRequest object containing the sender’s information
+     *                to display in the view.
+     * @throws IOException If an I/O error occurs during the initialization.
+     */
     @Override
     public void onOpen(Object input, Object input2) throws IOException {
         friendshipRequest = (FriendshipRequest) input2;
@@ -51,7 +62,13 @@ public class AcceptAndRejectController extends Controller implements Initializab
 
     }
 
-
+    /**
+     * Accepts a friendship request and updates contact lists accordingly.
+     *
+     * This method adds the sender of the friendship request to the logged-in user's
+     * contact list and vice versa. Once the contacts are added, it deletes the friendship
+     * request from the pending list and closes the current view.
+     */
     @FXML
     private void acceptRequest(){
         User userLogged = UserSession.UserSession().getUserLoggedIn();
@@ -72,6 +89,12 @@ public class AcceptAndRejectController extends Controller implements Initializab
         }
     }
 
+    /**
+     * Rejects a friendship request and removes it from the list.
+     *
+     * This method deletes the friendship request from the list of pending requests
+     * and closes the current view.
+     */
     @FXML
     private void rejectRequest(){
         build().deleteOneRequest(friendshipRequest);
@@ -79,6 +102,12 @@ public class AcceptAndRejectController extends Controller implements Initializab
 
     }
 
+    /**
+     * Closes the current view.
+     *
+     * This helper method retrieves the current stage from the reject button's scene
+     * and closes the window.
+     */
     private void close(){
 
 
